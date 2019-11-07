@@ -195,7 +195,7 @@ export default {
 /* 导航栏 每个导航 */
 #header .header-nav .header-nav-wrapper > li {
   float: left;
-  margin: 0 30px;
+  margin: 0 15px;
   position: relative;
 }
 /* 导航栏 每个导航下面的 a 链接 */
