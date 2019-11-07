@@ -25,6 +25,14 @@ export default new Router({
             title: '首页'
           }
         }]
-    }
+    },
+    {
+      path: '/contactus',
+      name: 'contactus',
+      component: resolve => require(['@/components/ContactUs'], resolve),
+      meta: {
+        title: '联系我们'
+      }
+    },
   ]
 })

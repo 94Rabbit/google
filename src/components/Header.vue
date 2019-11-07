@@ -121,7 +121,7 @@ export default {
         },
         {
           name: "Contact Us",
-          path: "/companyintroduction",
+          path: "/contactus",
           children: []
         },
       ]
