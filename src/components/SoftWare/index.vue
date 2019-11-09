@@ -49,9 +49,9 @@
 		 							<div class="soft-m"><p><a :href="item.href">{{item.name}}</a></p></div>
 		 							<div class="soft-f">
 		 								<button>
-		 									<i class="glyphicon glyphicon-camera" aria-hidden="true"></i>Inquire</button>
+		 									<i class="glyphicon glyphicon-envelope" aria-hidden="true"></i>Inquire</button>
 		 									<a href="##">
-		 										<i class="glyphicon glyphicon-share" aria-hidden="true"></i>
+		 										<i class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></i>
 		 										<span>Add to Basket</span>
 		 									</a>
 		 							</div>

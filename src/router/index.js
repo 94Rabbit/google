@@ -46,9 +46,27 @@ export default new Router({
       path: '/software',
       name: 'software',
       query: { userId: 123 },
-      component: resolve => require(['@/components/software'], resolve),
+      component: resolve => require(['@/components/SoftWare'], resolve),
       meta: {
         title: '产品列表'
+      }
+    },
+    {
+      path: '/software/bigData',
+      name: 'prodetail',
+      query: { ProId: 123 },
+      component: resolve => require(['@/components/ProDetail'], resolve),
+      meta: {
+        title: '产品详情'
+      }
+    },
+    {
+      path: '/software/smartTown',
+      name: 'prodetail',
+      query: { ProId: 123 },
+      component: resolve => require(['@/components/ProDetail'], resolve),
+      meta: {
+        title: '产品详情'
       }
     },
   ]
