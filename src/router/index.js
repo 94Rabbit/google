@@ -32,6 +32,14 @@ export default new Router({
       component: resolve => require(['@/components/ContactUs'], resolve),
       meta: {
         title: '联系我们'
+      },
+    },
+    {
+      path: '/newsinformation',
+      name: 'aboutus',
+      component: resolve => require(['@/components/AboutUs'], resolve),
+      meta: {
+        title: '关于我们'
       }
     },
   ]
