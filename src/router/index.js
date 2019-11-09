@@ -42,5 +42,14 @@ export default new Router({
         title: '关于我们'
       }
     },
+    {
+      path: '/software',
+      name: 'software',
+      query: { userId: 123 },
+      component: resolve => require(['@/components/software'], resolve),
+      meta: {
+        title: '产品列表'
+      }
+    },
   ]
 })
