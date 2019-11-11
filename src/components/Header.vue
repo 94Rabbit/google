@@ -1,73 +1,40 @@
 <template>
-  <!-- 头部整体盒子 -->
-  <div id="header" class="container-fuild">
-    <div class="header-nav container hidden-xs">
-      <!-- 导航logo -->
-      <div class="header-nav-logo">
-        <img src="@/assets/img/log.png">
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#"><img src="@/assets/img/log.png"  style="height: 100%;" alt=""></a>
       </div>
-      <!-- 导航内容 -->
-      <ul class="header-nav-wrapper">
-        <li
-          v-for="(item,index) in navList"
-          :key="index"
-          :class="index==navIndex?'active':''"
-          @click="navClick(index,item.name)"
-        >
-          <router-link :to="item.path">
-            {{item.name}}
-            <span v-if="item.children.length>0" class="glyphicon glyphicon-menu-down"></span>
-            <i class="underline"></i>
-          </router-link>
-          <dl v-if="item.children.length>0">
-            <dt v-for="(i,n) in item.children" :key="n">
-              <router-link :to="i.path">{{i.name}}</router-link>
-            </dt>
-          </dl>
-        </li>
-      </ul>
-    </div>
-    <!-- 手机导航 -->
-    <div class="header-nav-m container-fuild visible-xs">
-      <div class="header-nav-m-logo">
-        <img class="center-block" src="@/assets/img/log.png" alt="logo">
-      </div>
-      <!-- 导航栏 -->
-      <div class="header-nav-m-menu text-center">
-        {{menuName}}
-        <div
-          class="header-nav-m-menu-wrapper"
-          data-toggle="collapse"
-          data-target="#menu"
-          @click="menuClick"
-        >
-          <span :class="menuClass"></span>
-        </div>
-        <!-- 导航内容 -->
-        <ul id="menu" class="header-nav-m-wrapper collapse">
-          <li
-            v-for="(item,index) in navList"
-            :key="index"
-            :class="index==navIndex?'active':''"
-            @click="navClick(index,item.name)"
-            data-toggle="collapse"
-            data-target="#menu"
-          >
-            <router-link :to="item.path">
-              {{item.name}}
-<!--              <span v-if="item.children.length>0" class="glyphicon glyphicon-menu-down"></span>-->
-              <i class="underline"></i>
-            </router-link>
-<!--            <dl v-if="item.children.length>0">-->
-<!--              <dt v-for="(i,n) in item.children" :key="n">-->
-<!--                <router-link :to="i.path">{{i.name}}</router-link>-->
-<!--              </dt>-->
-<!--            </dl>-->
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-right" >
+          <li><router-link to="/Home">Home</router-link></li>
+          <li class="dropdown">
+            <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><router-link to="/products">Products</router-link><span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="#">Action</a></li>
+              <li><a href="#">Another action</a></li>
+              <li><a href="#">Something else here</a></li>
+            </ul>
           </li>
+          <li><router-link to="/news">News</router-link></li>
+          <li><router-link to="/aboutus">About Us</router-link></li>
+          <li><router-link to="/contactus">Contact Us</router-link></li>
         </ul>
+        <form class="navbar-form navbar-left">
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Search">
+          </div>
+        </form>
       </div>
     </div>
-  </div>
+  </nav>
 </template>
 <script>
 export default {
@@ -85,38 +52,38 @@ export default {
         },
         {
           name: "Products",
-          path: "/software",
+          path: "/products",
           children: [
             {
               name: "industrial Dryer",
-              path: "/software/smartTown"
+              path: "/products/smartTown"
             },
             {
               name: "impact Mill",
-              path: "/software/bigData"
+              path: "/products/bigData"
             },
             {
               name: "Power Mixer",
-              path: "/software/smartTown"
+              path: "/products/smartTown"
             },
             {
               name: "Wet Granulator",
-              path: "/software/bigData"
+              path: "/products/bigData"
             },
             {
               name: "Conveying Equipment",
-              path: "/software/bigData"
+              path: "/products/bigData"
             }
           ],
         },
         {
           name: "News",
-          path: "/service",
+          path: "/news",
           children: []
         },
         {
           name: "About Us",
-          path: "/newsinformation",
+          path: "/aboutus",
           children: []
         },
         {

@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <Header></Header>
+    <Bread></Bread>
     <router-view/>
     <Footer></Footer>
 <!--    <GoTop></GoTop>-->

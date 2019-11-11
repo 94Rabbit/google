@@ -37,8 +37,10 @@ Vue.component(Header.name,Header)
 import Footer from './components/Footer'
 Vue.component(Footer.name,Footer)
 
-Vue.config.productionTip = false
+import Bread from './components/Bread'
+Vue.component(Bread.name,Bread)
 
+Vue.config.productionTip = false
 
 router.beforeEach((to, from, next) => {
   if(to.meta.title){

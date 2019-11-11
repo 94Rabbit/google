@@ -35,7 +35,7 @@ export default new Router({
       },
     },
     {
-      path: '/newsinformation',
+      path: '/aboutus',
       name: 'aboutus',
       component: resolve => require(['@/components/AboutUs'], resolve),
       meta: {
@@ -43,16 +43,15 @@ export default new Router({
       }
     },
     {
-      path: '/software',
-      name: 'software',
-      query: { userId: 123 },
-      component: resolve => require(['@/components/SoftWare'], resolve),
+      path: '/products',
+      name: 'products',
+      component: resolve => require(['@/components/Product'], resolve),
       meta: {
         title: '产品列表'
       }
     },
     {
-      path: '/software/bigData',
+      path: '/products/bigData',
       name: 'prodetail',
       query: { ProId: 123 },
       component: resolve => require(['@/components/ProDetail'], resolve),
@@ -61,7 +60,7 @@ export default new Router({
       }
     },
     {
-      path: '/software/smartTown',
+      path: '/products/smartTown',
       name: 'prodetail',
       query: { ProId: 123 },
       component: resolve => require(['@/components/ProDetail'], resolve),
@@ -69,5 +68,13 @@ export default new Router({
         title: '产品详情'
       }
     },
+    {
+      path: '/news',
+      name: 'news',
+      component: resolve => require(['@/components/News'], resolve),
+      meta: {
+        title: '新闻列表'
+      }
+    }
   ]
 })
