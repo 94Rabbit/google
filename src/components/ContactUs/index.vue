@@ -17,14 +17,13 @@
                 </div>
               </div>
               <div class="form-group">
-                <label for="tel" class="col-sm-2 control-label">电话</label>
                 <div class="col-sm-10">
                   <input type="text" class="form-control" id="tel" placeholder="Message">
                 </div>
               </div>
               <div class="form-group">
-                <div class="col-sm-offset-2 col-sm-10">
-                  <button type="submit" class="btn btn-default btn-block">提交</button>
+                <div class="col-sm-10">
+                  <button type="submit" class="btn btn-default btn-block" style="background: red;color:#fff">submit</button>
                 </div>
               </div>
             </form>

@@ -18,9 +18,11 @@
           <li class="dropdown">
             <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><router-link to="/products">Products</router-link><span class="caret"></span></a>
             <ul class="dropdown-menu">
-              <li><a href="#">Action</a></li>
-              <li><a href="#">Another action</a></li>
-              <li><a href="#">Something else here</a></li>
+              <li><a href="#">Industrial Dryer</a></li>
+              <li><a href="#">Impact Mill</a></li>
+              <li><a href="#">Powder Mixer</a></li>
+              <li><a href="#">Wet Granulator</a></li>
+              <li><a href="#">Conveying Equipment</a></li>
             </ul>
           </li>
           <li><router-link to="/news">News</router-link></li>
