@@ -51,6 +51,9 @@ export default {
   margin: 50px 0 10px;
 }
 @media screen and (max-width: 997px) {
+  #footer{
+    margin-bottom: 60px;
+  }
   .title {
     font-size: 20px;
   }

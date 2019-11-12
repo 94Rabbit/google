@@ -28,7 +28,6 @@ import './assets/js/bootstrap.min'
 /* animate.css */
 import 'animate.css'
 
-
 /* 头部组件 */
 import Header from './components/Header'
 Vue.component(Header.name,Header)
@@ -37,8 +36,15 @@ Vue.component(Header.name,Header)
 import Footer from './components/Footer'
 Vue.component(Footer.name,Footer)
 
-Vue.config.productionTip = false
+/* 动态面包屑 */
+import Bread from './components/Bread'
+Vue.component(Bread.name,Bread)
 
+/* 工具组建 */
+import Tools from './components/Tools'
+Vue.component(Tools.name,Tools)
+
+Vue.config.productionTip = false
 
 router.beforeEach((to, from, next) => {
   if(to.meta.title){
