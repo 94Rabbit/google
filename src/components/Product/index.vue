@@ -33,7 +33,7 @@
 		 								<button>
 		 									<i class="glyphicon glyphicon-camera" aria-hidden="true"></i>Inquire</button>
 		 									<a href="##">
-		 										<i class="glyphicon glyphicon-share" aria-hidden="true"></i>
+		 										<i class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></i>
 		 										<span>Add to Basket</span>
 		 									</a>
 		 							</div>
@@ -66,11 +66,16 @@
 		 		</div>
 		 	</div>
 		 </div>
+		 <shop-note></shop-note>
 	</div>
 </template>
 <script>
+import  ShopNote  from '@/components/ShopNote'
 export default {
-    name: "SoftWare",
+	name: "SoftWare",
+	components: {
+      "shop-note": ShopNote,
+    },
     data() {
       return {
       	protype:[
