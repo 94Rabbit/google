@@ -33,7 +33,7 @@
           </div>
           <div class="basket-btns fix">
             <button id="basketEmpty" type="button" @click="basketEmpty">Empty</button>
-            <button id="basketInquire" class="flr" type="submit">Inquire</button>
+            <button id="basketInquire" class="flr" type="submit"><a href="/#/inquire" style="color:#fff">inquire</a></button>
           </div>
         </div>
       </form>

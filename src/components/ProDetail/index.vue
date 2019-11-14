@@ -61,7 +61,7 @@
 			 						</div>
 			 						<div class="row" style="padding: 15px 0;">
 			 							<div class="col-xs-12 col-sm-12 col-md-3">
-			 								<button type="button" class="btn btn-default btn-pro-s">inquire</button>
+			 								<button type="button" class="btn btn-default btn-pro-s"><a href="/#/inquire" style="color:#d9534f">inquire</a></button>
 			 							</div>
 			 							<div class="col-xs-12 col-sm-12 col-md-9">
 			 								<button type="button" class="btn btn-danger btn-group-lg"><i class="glyphicon glyphicon-shopping-cart"></i>&nbsp;&nbsp;Add To Baskt</button>
@@ -162,16 +162,19 @@
 		 		</div>
 		 	</div>
 		 </div>
+		 <shop-note></shop-note>
 	</div>
 </template>
 <script>
 	import SoftLeft from "@/components/SoftLeft"
 	import Swiper from "swiper";
   import { WOW } from 'wowjs';
+  import  ShopNote  from '@/components/ShopNote'
 export default {
     name: "ProDetail",
     components: {
-      "soft-left": SoftLeft,
+	  "soft-left": SoftLeft,
+	  "shop-note": ShopNote,
     },
     data() {
       return {

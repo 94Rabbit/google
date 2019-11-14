@@ -26,12 +26,12 @@
 		 					<div class="col-xs-12 col-sm-6 col-md-3" style="padding-bottom: 10px;">
 		 						<div class="software-r-box">
 		 							<div class="soft-t">
-		 								<a href="##"><img src="../../assets/img/640-220-220.jpg"></a>
+		 								<a href="/#/products/bigData"><img src="../../assets/img/640-220-220.jpg"></a>
 		 							</div>
-		 							<div class="soft-m"><p><a href="##">Double Cone Powder Mixer blender</a></p></div>
+		 							<div class="soft-m"><p><a href="/#/products/bigData">Double Cone Powder Mixer blender</a></p></div>
 		 							<div class="soft-f">
 		 								<button>
-		 									<i class="glyphicon glyphicon-camera" aria-hidden="true"></i>Inquire</button>
+		 									<i class="glyphicon glyphicon-envelope" aria-hidden="true"></i>Inquire</button>
 		 									<a href="##">
 		 										<i class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></i>
 		 										<span>Add to Basket</span>
@@ -91,11 +91,11 @@ export default {
       	{name:'W-MAIL',concat:'stone@doingmachine.com'}
       	],
       	list:[
-      	{name:'Double Cone Powder Mixer blender',href:'###',hot:true,src:'/static/img/640-220-220.jpg'},
-      	{name:'Air Classifying Mill Pulverizer',href:'###',hot:false,src:'/static/img/1-220-220.jpg'},
-      	{name:'Rotary Basket Extruding Granulator ',href:'###',hot:true,src:'/static/img/1-220-220(1).jpg'},
-      	{name:'Flexible Screw Auger Conveyor',href:'###',hot:false,src:'/static/img/640-220-220(1).jpg'},
-      	{name:'Double Cone Powder Mixer blender',href:'###',hot:true,src:'/static/img/1-220-220.jpg'}
+      	{name:'Double Cone Powder Mixer blender',href:'/#/products/bigData',hot:true,src:'/static/img/640-220-220.jpg'},
+      	{name:'Air Classifying Mill Pulverizer',href:'/#/products/bigData',hot:false,src:'/static/img/1-220-220.jpg'},
+      	{name:'Rotary Basket Extruding Granulator ',href:'/#/products/bigData',hot:true,src:'/static/img/1-220-220(1).jpg'},
+      	{name:'Flexible Screw Auger Conveyor',href:'/#/products/bigData',hot:false,src:'/static/img/640-220-220(1).jpg'},
+      	{name:'Double Cone Powder Mixer blender',href:'/#/products/bigData',hot:true,src:'/static/img/1-220-220.jpg'}
       	]
       };
     },

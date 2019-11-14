@@ -6,7 +6,7 @@
 			<li v-for="(item,index) in protype" :key="index"><a :href="item.href">{{item.name}}</a></li>
 		</ul>
 	</div>
-	<div class="software-l-o">
+	<div class="software-l-o" v-show="!message">
 		<h4>CONTACT US</h4>
 		<div class="software-l-n">
 		<div v-for="(item,index) in concat" :key="index">
@@ -19,7 +19,14 @@
 </template>
 <script>
 export default {
-    name: "SoftLeft",
+	name: "SoftLeft",
+	props: {
+    message: {
+		 type: String,
+		 require: false,
+		 default: ""
+		},
+	},
     data() {
       return {
       	protype:[

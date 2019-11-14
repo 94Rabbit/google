@@ -28,6 +28,8 @@ import './assets/js/bootstrap.min'
 /* animate.css */
 import 'animate.css'
 
+
+
 /* 头部组件 */
 import Header from './components/Header'
 Vue.component(Header.name,Header)
@@ -42,6 +44,9 @@ Vue.component(Bread.name,Bread)
 
 /* 工具组建 */
 import Tools from './components/Tools'
+
+import VeeValidate,{ Validator } from 'vee-validate'
+
 Vue.component(Tools.name,Tools)
 
 Vue.config.productionTip = false
@@ -52,6 +57,10 @@ router.beforeEach((to, from, next) => {
   }
   next();
 });
+
+
+
+Vue.use(VeeValidate);
 
 
 new Vue({
