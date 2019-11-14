@@ -44,6 +44,10 @@ Vue.component(Bread.name,Bread)
 import Tools from './components/Tools'
 Vue.component(Tools.name,Tools)
 
+/* 回到顶部 */
+import GoTop from './components/GoTop'
+Vue.component(GoTop.name,GoTop)
+
 Vue.config.productionTip = false
 
 router.beforeEach((to, from, next) => {

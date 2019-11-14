@@ -5,7 +5,7 @@
     <router-view/>
     <Footer></Footer>
     <Tools></Tools>
-<!--    <GoTop></GoTop>-->
+    <GoTop></GoTop>
   </div>
 </template>
 
