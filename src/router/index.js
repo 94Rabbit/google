@@ -75,6 +75,14 @@ export default new Router({
       meta: {
         title: '新闻列表'
       }
+    },
+    {
+      path: '/inquire',
+      name: 'inquire',
+      component: resolve => require(['@/components/Inquire'], resolve),
+      meta: {
+        title: '订购列表'
+      }
     }
   ]
 })
