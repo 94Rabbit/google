@@ -3,7 +3,7 @@
     <Header></Header>
     <Bread></Bread>
     <router-view/>
-    <Footer1></Footer1>
+    <Footer></Footer>
 <!--    <Tools></Tools>-->
     <Tips></Tips>
 <!--    <GoTop></GoTop>-->

@@ -33,12 +33,12 @@ import Header from './components/Header'
 Vue.component(Header.name,Header)
 
 /* 尾部组件 */
-import Footer from './components/Footer'
-Vue.component(Footer.name,Footer)
+// import Footer from './components/Footer'
+// Vue.component(Footer.name,Footer)
 
-/* 尾部组件1 */
-import Footer1 from './components/Footer1'
-Vue.component(Footer1.name, Footer1)
+/* 尾部组件 */
+import Footer from './components/Footer'
+Vue.component(Footer.name, Footer)
 
 /* Tips组件 */
 import Tips from './components/Tips'
