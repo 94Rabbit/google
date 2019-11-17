@@ -6,11 +6,9 @@ import App from './App'
 /* 路由 */
 import router from './router'
 
-/* axios */
-// import axios from './api'
-// import api from './api/api'
-// Vue.prototype.http = axios;
-// Vue.prototype.api = api;
+/* 导入字体库 */
+// import "./assets/style/font-awesome.css";
+import "./assets/fonts/style.css";
 
 /* swiper */
 import 'swiper/dist/css/swiper.min.css';
@@ -38,9 +36,20 @@ Vue.component(Header.name,Header)
 import Footer from './components/Footer'
 Vue.component(Footer.name,Footer)
 
+/* 尾部组件1 */
+import Footer1 from './components/Footer1'
+Vue.component(Footer1.name, Footer1)
+
+/* Tips组件 */
+import Tips from './components/Tips'
+Vue.component(Tips.name, Tips)
+
 /* 动态面包屑 */
 import Bread from './components/Bread'
 Vue.component(Bread.name,Bread)
+
+/* 侧边栏 */
+
 
 /* 工具组建 */
 import Tools from './components/Tools'

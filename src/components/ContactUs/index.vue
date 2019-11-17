@@ -8,22 +8,22 @@
             <form class="form-horizontal" role="form">
               <div class="form-group">
                 <div class="col-sm-10 col-xs-12">
-                  <input type="text" class="form-control" id="name" placeholder="Email">
+                  <input type="text" v-model="feedBackParam.email" class="form-control" id="name" placeholder="Email">
                 </div>
               </div>
               <div class="form-group">
                 <div class="col-sm-10">
-                  <input type="text" class="form-control" id="email" placeholder="Name">
+                  <input type="text" v-model="feedBackParam.name" class="form-control" id="email" placeholder="Name">
                 </div>
               </div>
               <div class="form-group">
                 <div class="col-sm-10">
-                  <input type="text" class="form-control" id="tel" placeholder="Message">
+                  <input type="text" v-model="feedBackParam.message" class="form-control" id="tel" placeholder="Message">
                 </div>
               </div>
               <div class="form-group">
                 <div class="col-sm-10">
-                  <button type="submit" class="btn btn-default btn-block" style="background: red;color:#fff">submit</button>
+                  <button type="submit" class="btn btn-default btn-block" style="background: red;color:#fff" @click="feedBack">submit</button>
                 </div>
               </div>
             </form>
@@ -38,30 +38,26 @@
 </template>
 <script>
   import { WOW } from 'wowjs'
+  import { feedbackAPI } from '@/api'
   export default {
     name: "ContactUs",
     data() {
-      return {};
+      return {
+        feedBackParam:{
+          name: '张三',
+          email: 'zmj2345356@gmail.com',
+          message: 'qwereklt5yjrktyjk56ljku75jkl7klrgklefjlkskljflksdcnsdnbvksdklfjwerfjklwefklwlk 四大皆空肺热可以绕口令二刚看了让他俩快高考了 234365457上东城附近快速公交2®34',
+          production_id:  122
+        }
+      };
     },
     mounted() {
-      // var map = new BMap.Map("map"); // 创建地图实例
-      // var point = new BMap.Point(116.301841,40.156506); // 创建点坐标
-      // map.centerAndZoom(point, 18); // 初始化地图，设置中心点坐标和地图级别
-      // map.enableScrollWheelZoom(true); //开启鼠标滚轮缩放
-      // var marker = new BMap.Marker(point); // 创建标注
-      // map.addOverlay(marker); // 将标注添加到地图中
-      // var opts = {
-      //   width: 50, // 信息窗口宽度
-      //   height: 10, // 信息窗口高度
-      //   title: "黄元公寓" // 信息窗口标题
-      // };
-      // var infoWindow = new BMap.InfoWindow(
-      //   "我的家",
-      //   opts
-      // ); // 创建信息窗口对象
-      // map.openInfoWindow(infoWindow, map.getCenter()); // 打开信息窗口
-      // var wow = new WOW();
-      // wow.init();
+
+    },
+    methods:{
+      async feedBack(){
+        let res = await feedbackAPI(this.feedBackParam)
+      }
     }
   };
 </script>

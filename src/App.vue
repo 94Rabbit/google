@@ -3,9 +3,10 @@
     <Header></Header>
     <Bread></Bread>
     <router-view/>
-    <Footer></Footer>
-    <Tools></Tools>
-    <GoTop></GoTop>
+    <Footer1></Footer1>
+<!--    <Tools></Tools>-->
+    <Tips></Tips>
+<!--    <GoTop></GoTop>-->
   </div>
 </template>
 
