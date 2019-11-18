@@ -6,7 +6,7 @@
           <div class="software-l-o">
             <h4>NEWS</h4>
             <ul>
-              <li v-for="(item,index) in newsList" :key="index"><a :href="item.href">{{item.name}}</a></li>
+              <li v-for="(item,index) in newsType" :key="index" @click="changType(item)" style="cursor:pointer">{{item.name_en}}</li>
             </ul>
           </div>
           <div class="software-l-o">
@@ -20,7 +20,7 @@
           </div>
         </div>
         <div class="col-xs-12 col-sm-8 col-md-9">
-          <NewList></NewList>
+          <NewList :title="new_title" :newList="newlist"></NewList>
         </div>
         </div>
       </div>
@@ -28,7 +28,7 @@
 </template>
 <script>
   import  NewList  from '@/components/News/NewList'
-  import { getNewListAPI } from '@/api'
+  import { getNewListAPI, getNewsTypesAPI } from '@/api'
   export default {
     name: "SoftWare",
     components: {
@@ -36,12 +36,12 @@
     },
     data() {
       return {
-        Type:{
-            type:1
-        },
-        newsList:[
-          {name:'COMPANY NEWS',href:'###'},
-          {name:'INDUSTRY NEWS',href:'###'}
+        type: 1, // 默认新闻类型
+        new_title: '',
+        newlist:[],
+        newsType:[
+          {name:'COMPANY NEWS', type:1},
+          {name:'INDUSTRY NEWS', type:2}
         ],
         concat:[
           {name:'WECHAT/WHATSAPP',concat:'18605194068'},
@@ -59,13 +59,35 @@
     },
     mounted() {
       // 传递参数
-      console.log(this.$route.query.proId)
+      // console.log(this.$route.query.proId)
       this.init();
     },
     methods:{
       async init(){
-        let res = await getNewListAPI({"type":1});
-        console.log(res);
+          this.getNews(this.type)
+          this.getNewTypes()
+      },
+      /*
+      获取新闻类型列表
+       */
+      async getNewTypes(){
+        let res = await getNewsTypesAPI();
+        if(res && res.data && res.data.data){
+          this.newsType = res.data.data
+        }
+      },
+      async getNews(_type){
+        let res = await getNewListAPI({type:_type});
+        this.newlist = res.data.data;
+        if(_type===1){
+          this.new_title = 'COMPANY NEWS'
+        }else{
+          this.new_title = 'INDUSTRY NEWS'
+        }
+      },
+      async changType(_item){
+        this.type = _item.id
+        this.getNews(this.type)
       }
     }
   };

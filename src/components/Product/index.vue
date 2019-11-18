@@ -6,7 +6,7 @@
 		 			<div class="software-l-o">
 		 				<h4>PRODUCT CATEGORY</h4>
 		 				<ul>
-		 					<li v-for="(item,index) in protype" :key="index"><a :href="item.href">{{item.name}}</a></li>
+		 					<li v-for="(item,index) in productTypes" :key="index">{{item.name_en}}</li>
 		 				</ul>
 		 			</div>
 		 			<div class="software-l-o">
@@ -14,7 +14,6 @@
 		 				<div class="software-l-n">
 		 				<div v-for="(item,index) in concat" :key="index">
 		 					<p>{{item.name}} <br/>{{item.concat}}  </p>
-		 					
 		 				</div>
 		 				<p></p>
 		 				</div>
@@ -23,44 +22,23 @@
 		 		<div class="col-xs-12 col-sm-8 col-md-9">
 		 			<div class="software-r">
 		 				<div class="row">
-		 					<div class="col-xs-12 col-sm-6 col-md-3" style="padding-bottom: 10px;">
-		 						<div class="software-r-box">
-		 							<div class="soft-t">
-		 								<a href="/#/products/bigData"><img src="../../assets/img/640-220-220.jpg"></a>
-		 							</div>
-		 							<div class="soft-m"><p><a href="/#/products/bigData">Double Cone Powder Mixer blender</a></p></div>
-		 							<div class="soft-f">
-		 								<button>
-		 									<i class="glyphicon glyphicon-envelope" aria-hidden="true"></i>Inquire</button>
-		 									<a href="##">
-		 										<i class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></i>
-		 										<span>Add to Basket</span>
-		 									</a>
-		 							</div>
-		 							<div class="soft-hot"><span></span></div>
-		 						</div>
+              <div class="col-xs-12 col-sm-6 col-md-3" style="padding-bottom: 10px;" v-for="(item,index) in productList" :key="index">
+                  <div class="software-r-box">
+                    <div class="soft-t" @click="goProductDetail(item)">
+                      <a :href="item.href"><img :src="item.pic[0]"></a>
+                    </div>
+                    <div class="soft-m"><p><a :href="item.href">{{item.name_en}}</a></p></div>
+                    <div class="soft-f">
+                      <button>
+                        <i class="glyphicon glyphicon-envelope" aria-hidden="true"></i>Inquire</button>
+                        <a href="##">
+                          <i class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></i>
+                          <span>Add to Basket</span>
+                        </a>
+                    </div>
+                    <div class="soft-hot" v-show="item.hot"><span></span></div>
+                  </div>
 		 					</div>
-
-                            <div class="col-xs-12 col-sm-6 col-md-3" style="padding-bottom: 10px;" v-for="(item,index) in list" :key="index">
-		 						<div class="software-r-box">
-		 							<div class="soft-t">
-		 								<a :href="item.href"><img src="../../assets/img/640-220-220.jpg"></a>
-		 							</div>
-		 							<div class="soft-m"><p><a :href="item.href">{{item.name}}</a></p></div>
-		 							<div class="soft-f">
-		 								<button>
-		 									<i class="glyphicon glyphicon-envelope" aria-hidden="true"></i>Inquire</button>
-		 									<a href="##">
-		 										<i class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></i>
-		 										<span>Add to Basket</span>
-		 									</a>
-		 							</div>
-		 							<div class="soft-hot" v-show="item.hot"><span></span></div>
-		 						</div>
-		 					</div>
-
-
-
 		 				</div>
 		 			</div>
 		 		</div>
@@ -71,6 +49,7 @@
 </template>
 <script>
 import  ShopNote  from '@/components/ShopNote'
+import { getProductAPI, getProductTypeAPI } from '@/api'
 export default {
 	name: "SoftWare",
 	components: {
@@ -78,13 +57,14 @@ export default {
     },
     data() {
       return {
-      	protype:[
-      	{name:'Industrial Dryer',href:'###'},
-      	{name:'Impact Mill',href:'###'},
-      	{name:'Powder Mixer',href:'###'},
-      	{name:'Wet Granulator',href:'###'},
-      	{name:'Conveying Equipment',href:'###'}
-      	],
+        param:{
+          type: 1,
+          is_hot:2,
+          is_main:2,
+          keyword:'6666'
+        },
+        productTypes:[], // 左侧商品类型
+        productList:[], // 右侧商品列表
       	concat:[
       	{name:'WECHAT/WHATSAPP',concat:'18605194068'},
       	{name:'TE',concat:'+86-18605194068'},
@@ -92,21 +72,45 @@ export default {
       	],
       	list:[
       	{name:'Double Cone Powder Mixer blender',href:'/#/products/bigData',hot:true,src:'/static/img/640-220-220.jpg'},
-      	{name:'Air Classifying Mill Pulverizer',href:'/#/products/bigData',hot:false,src:'/static/img/1-220-220.jpg'},
-      	{name:'Rotary Basket Extruding Granulator ',href:'/#/products/bigData',hot:true,src:'/static/img/1-220-220(1).jpg'},
-      	{name:'Flexible Screw Auger Conveyor',href:'/#/products/bigData',hot:false,src:'/static/img/640-220-220(1).jpg'},
-      	{name:'Double Cone Powder Mixer blender',href:'/#/products/bigData',hot:true,src:'/static/img/1-220-220.jpg'}
+      	// {name:'Air Classifying Mill Pulverizer',href:'/#/products/bigData',hot:false,src:'/static/img/1-220-220.jpg'},
+      	// {name:'Rotary Basket Extruding Granulator ',href:'/#/products/bigData',hot:true,src:'/static/img/1-220-220(1).jpg'},
+      	// {name:'Flexible Screw Auger Conveyor',href:'/#/products/bigData',hot:false,src:'/static/img/640-220-220(1).jpg'},
+      	// {name:'Double Cone Powder Mixer blender',href:'/#/products/bigData',hot:true,src:'/static/img/1-220-220.jpg'}
       	]
       };
     },
     mounted() {
-    	// 传递参数
-      console.log(this.$route.query.proId)
-
+	    this.getProductType();
+      this.getProductList({})
+    },
+    methods:{
+	    /*
+	      获取左侧商品类型
+	     */
+      async getProductType(){
+        let res = await getProductTypeAPI({});
+        if(res.data && res.data.data){
+          this.productTypes = res.data.data
+        }
+      },
+      /*
+        获取商品列表
+       */
+      async getProductList(_param){
+        let res = await getProductAPI(_param);
+        this.productList = res.data.data
+      },
+      /*
+       跳转商品详情
+      */
+      async  goProductDetail(_item){
+        this.$router.push({name:"productDetail",query:_item})
+        console.log( this.$router, 2222)
+      }
     }
   };
 </script>
- <style lang="scss" scoped> 
+ <style lang="scss" scoped>
  .software-l-o {
  	margin-top: 30px;
  	margin-bottom: 50px;

@@ -29,7 +29,7 @@ export default new Router({
     {
       path: '/contactus',
       name: 'contactus',
-      component: resolve => require(['@/components/ContactUs'], resolve),
+      component: resolve => require(['@/components/ContactUs/contact'], resolve),
       meta: {
         title: '联系我们'
       },
@@ -51,23 +51,14 @@ export default new Router({
       }
     },
     {
-      path: '/products/bigData',
-      name: 'prodetail',
-      query: { ProId: 123 },
+      path: '/products/productDetail',
+      name: 'productDetail',
       component: resolve => require(['@/components/ProDetail'], resolve),
       meta: {
         title: '产品详情'
       }
     },
-    {
-      path: '/products/smartTown',
-      name: 'prodetail',
-      query: { ProId: 123 },
-      component: resolve => require(['@/components/ProDetail'], resolve),
-      meta: {
-        title: '产品详情'
-      }
-    },
+
     {
       path: '/news',
       name: 'news',

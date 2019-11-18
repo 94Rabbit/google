@@ -1,31 +1,13 @@
 <template>
     <div>
-      <p class="new-list">NEWS</p>
+      <p class="new-list">{{title}}</p>
       <div class="row">
-        <div class="col-sm-6 col-md-4">
+        <div class="col-sm-6 col-md-4" v-for="item in newList">
           <div class="thumbnail">
-            <img src="../../assets/img/banner1.png" alt="">
+            <img :src="item.pic" alt="">
             <div class="caption">
-              <h3>Thumbnail label</h3>
-              <p>暗杀事件后的沙哈圣诞节交换机撒谎觉得</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-4">
-          <div class="thumbnail">
-            <img src="../../assets/img/banner1.png" alt="">
-            <div class="caption">
-              <h3>Thumbnail label</h3>
-              <p>暗杀事件后的沙哈圣诞节交换机撒谎觉得</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-4">
-          <div class="thumbnail">
-            <img src="../../assets/img/banner1.png" alt="">
-            <div class="caption">
-              <h3>Thumbnail label</h3>
-              <p>暗杀事件后的沙哈圣诞节交换机撒谎觉得</p>
+              <h3 class="new-title">{{item.title_en}}</h3>
+              <p class="new-content">{{item.abstract}}</p>
             </div>
           </div>
         </div>
@@ -35,7 +17,21 @@
 
 <script>
     export default {
-        name: "Newlist"
+        name: "Newlist",
+        props:['title','newList'],
+        data:()=>{
+          return {
+
+          }
+        },
+        mounted() {
+          this.getNewList()
+        },
+        methods:{
+          async getNewList(){
+              console.log(this.newList, 2222)
+          }
+        }
     }
 </script>
 
@@ -64,5 +60,11 @@
     padding-right: 0;
     padding-bottom: 10px;
     padding-left: 0;
+  }
+  .new-title, .new-content{
+    overflow: hidden;/*超出部分隐藏*/
+    text-overflow:ellipsis;/* 超出部分显示省略号 */
+    white-space: nowrap;/*规定段落中的文本不进行换行 */
+    font-size: 30px;
   }
 </style>

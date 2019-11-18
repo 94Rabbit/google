@@ -153,6 +153,9 @@
 <style lang="less" scoped>
   @import "../assets/style/varibles.less";
   .footer {
+    /*position: fixed;*/
+    /*width: 100%;*/
+    /*bottom: 0;*/
     padding-top: 20px;
     .top {
       background-color: #7d7d7d;
