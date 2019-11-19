@@ -113,12 +113,15 @@
     <div class="foot">
       <div class="item">
         <div class="iconfont icon-dianhua1"></div>
+        <a style="position:absolute;width: 100%;height: 100%;" href="tel:+86-18605164068"></a>
       </div>
       <div class="item">
         <div class="iconfont icon-youjian"></div>
+        <a style="position:absolute;width: 100%;height: 100%;" href="mailto:stone@doingmachine.com"></a>
       </div>
       <div class="item">
         <div class="iconfont icon-dianhua"></div>
+        <a style="position:absolute;width: 100%;height: 100%;" href="https://api.whatsapp.com/send?phone=8618605194068"></a>
       </div>
     </div>
   </div>
@@ -443,6 +446,7 @@
         width: 100%;
         z-index: 99999999;
         .item {
+          position: relative;
           width: 33.33%;
           .zjw-center;
           color: #999;

@@ -15,9 +15,9 @@
                              </thead>
                              <tbody>
                                  <tr v-for="(item,index) in list" :key="index">
-                                     <td height="135" style="textAlign:center"><a href="##"><img src="../../assets/img/640-220-220.jpg"></a></td>
-                                     <td><a href="##">{{item.name}}</a></td>
-                                     <td><input type="number" class="form-control" :value="item.num"></td>
+                                     <td height="135" style="textAlign:center"><a href="##"><img :src="item.pic"></a></td>
+                                     <td><a href="##">{{item.name_name}}</a></td>
+                                     <td><input type="number" class="form-control" :value="item.num" disabled></td>
                                  </tr>
                              </tbody>
                          </table>
@@ -26,41 +26,41 @@
                          <form class="form-inline" ref="form" id="formSubmit">
                             <div class="col-xs-12 col-sm-6 col-md-6">
                                 <div class="form-group">
-                                  <input type="text" class="form-control" v-model="name" v-validate="'required'" name="name" placeholder="*Name">
+                                  <input type="text" class="form-control" v-model="orderInfo.name" v-validate="'required'" name="name" placeholder="*Name">
                                   <span v-show="errors.has('name')" class="help">{{ errors.first('name') }}</span>
                                 </div>
                             </div>
                             <div class="col-xs-12 col-sm-6 col-md-6">
                                 <div class="form-group">
-                                <input type="email" class="form-control" v-model="email" v-validate ="'required|email'" name="email" placeholder="*E-mail">
+                                <input type="email" class="form-control" v-model="orderInfo.email" v-validate ="'required|email'" name="email" placeholder="*E-mail">
                                 <span v-show="errors.has('email')" class="help">{{ errors.first('email') }}</span>
                                 </div>
                             </div>
                             <div class="col-xs-12 col-sm-6 col-md-6">
                                 <div class="form-group">
-                                <input type="text" class="form-control" name="company" placeholder="Company Name">
+                                <input type="text" class="form-control" name="company" v-model="orderInfo.company"  placeholder="Company Name">
                                 </div>
                             </div>
                             <div class="col-xs-12 col-sm-6 col-md-6">
                                 <div class="form-group">
-                                <input type="tel" class="form-control" name="tel" placeholder="Tel">
+                                <input type="tel" class="form-control" name="tel" v-model="orderInfo.cell" placeholder="Tel">
                                 </div>
                             </div>
                              <div class="col-xs-12 col-sm-12 col-md-12">
                                  <div class="form-group" style="height:auto;padding-bottom:10px">
-                                 <textarea name="message" class="form-control" cols="30" v-validate="'required'" v-model="message" rows="5" placeholder="*Message"></textarea>
+                                 <textarea name="message" class="form-control" cols="30" v-validate="'required'" v-model="orderInfo.message" rows="5" placeholder="*Message"></textarea>
                                  <span v-show="errors.has('message')" class="help">{{ errors.first('message') }}</span>
                                  </div>
                              </div>
-                             <div class="col-xs-12 col-sm-12 col-md-12">
-                                 <div class="form-group code">
-                                    <input type="text" name="code" class="form-control" v-validate="'required'" v-model="code" placeholder="*Verify Code">
-                                    <span v-show="errors.has('code')" class="help">{{ errors.first('code') }}</span>
-                                </div>
-                                <div class="form-group" style="width:60%;height:30px;vertical-align: top;">
-                                    <a href="###"><img src="@/assets/img/code.png" alt=""></a>
-                                </div>
-                             </div>
+<!--                             <div class="col-xs-12 col-sm-12 col-md-12">-->
+<!--                                 <div class="form-group code">-->
+<!--                                    <input type="text" name="code" class="form-control" v-validate="'required'" v-model="code" placeholder="*Verify Code">-->
+<!--                                    <span v-show="errors.has('code')" class="help">{{ errors.first('code') }}</span>-->
+<!--                                </div>-->
+<!--                                <div class="form-group" style="width:60%;height:30px;vertical-align: top;">-->
+<!--                                    <a href="###"><img src="@/assets/img/code.png" alt=""></a>-->
+<!--                                </div>-->
+<!--                             </div>-->
                              <div class="col-xs-12 col-sm-12 col-md-12">
                                  <p><button type="button" class="btn btn-primary" @click="submits">Submit</button></p>
                              </div>
@@ -82,6 +82,7 @@
 </template>
 <script>
 import SoftLeft from "@/components/SoftLeft"
+import { postOrderAPI } from '@/api'
 export default {
   name: "inquire",
   components: {
@@ -89,32 +90,45 @@ export default {
     },
   data() {
       return {
-        list:[
-            {name:'Double Cone Powder Mixer blender',href:'###',num:1,src:'/static/img/640-220-220.jpg'},
-            {name:'Air Classifying Mill Pulverizer',href:'###',num:2,src:'/static/img/1-220-220.jpg'}
-            ],
-            name:"",
-            email:"",
-            message:"",
-            code:""
+        list:[],
+        orderInfo:{
+          production: [],
+          name: '',
+          email: '',
+          company: '',
+          cell:'',
+          message: ''
+        }
       }
   },
-  mounthd(){
-
+  mounted(){
+      this.list = this.$store.getters.getCartList
   },
   methods:{
-      submits(){
-          console.log(this.$validator.validateAll())
-         this.$validator.validateAll().then((res) => {  
-            if(res) {
-                alert('提交成功')
-            } else {
-                return;
-            }
-            }).catch(() => { 
-            alert('Correct them errors!');
-        }); 
-    }
+     //  submits(){
+     //      console.log(this.$validator.validateAll())
+     //     this.$validator.validateAll().then((res) => {
+     //        if(res) {
+     //            a
+     //        } else {
+     //            return;
+     //        }
+     //        }).catch(() => {
+     //        alert('Correct them errors!');
+     //    });
+     // }
+      async submits(){
+        let products = []
+        this.list.forEach(item=>{
+          products.push({
+            id:item.id,
+            num:item.num
+          })
+        })
+        this.orderInfo.production = products
+        let res = await postOrderAPI(this.orderInfo)
+        alert(res.data.msg)
+      }
   }
 }
 </script>
@@ -156,7 +170,7 @@ export default {
                         // vertical-align: middle;
                         // height: 30px;
                     }
-                    
+
                 }
             }
          }

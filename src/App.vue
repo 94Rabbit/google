@@ -12,7 +12,15 @@
 
 <script>
   export default {
-    name: 'App'
+    name: 'App',
+    created () {
+      if (localStorage.getItem("cartList") ) {
+        this.$store.replaceState(Object.assign({}, this.$store.state,JSON.parse(localStorage.getItem("cartList"))))
+      }
+      window.addEventListener("beforeunload",()=>{
+        localStorage.setItem("cartList",JSON.stringify(this.$store.state))
+      })
+    }
   }
 </script>
 

@@ -33,7 +33,7 @@
                         <i class="glyphicon glyphicon-envelope" aria-hidden="true"></i>Inquire</button>
                         <a href="##">
                           <i class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></i>
-                          <span>Add to Basket</span>
+                          <span @click="addCart(item)">Add to Basket</span>
                         </a>
                     </div>
                     <div class="soft-hot" v-show="item.hot"><span></span></div>
@@ -105,6 +105,19 @@ export default {
       */
       async  goProductDetail(_item){
         this.$router.push({name:"productDetail",query:_item})
+      },
+      /*
+       添加购物车
+      */
+      async addCart(item){
+        const {id,name_en,pic} = item
+        let product = {
+          id,
+          name_en,
+          num:1,
+          pic:pic[0]
+        }
+        this.$store.commit('addCart',product)
       }
     }
   };

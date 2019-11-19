@@ -37,14 +37,15 @@
 <!--									      ></div>-->
 <!--									    </div>-->
 <!--									  </div>-->
-                  <goodsDetail :pic="productPics"/>
+<!--                  <goodsDetail :pic="productPics"/>-->
+                  <goodsDetail/>
 								</div>
 			 				</div>
 			 				<div class="col-xs-12 col-sm-12 col-md-6">
 			 					<div class="pro-de-rf">
 			 						<div class="p-h-t">
 				 						<h4>Double Cone Powder Mixer blender<span @click="openCode"><img src="https://www.doingmachine.com/phoenix/admin/prod/qrcode/21326924"></span></h4>
-				 						<div v-show="currPic"><img src="https://www.doingmachine.com/phoenix/admin/prod/qrcode/21326924"></div>
+                      <div v-show="currPic" ><img src="https://www.doingmachine.com/phoenix/admin/prod/qrcode/21326924"></div>
 				 					</div>
 			 						<p>SZH series double cone powder mixer blender is most often used for intimate mixing of dry powder or small granules with good flowability.</p>
 			 						<div class="row" style="padding: 10px 0">
@@ -53,7 +54,7 @@
 			 							</div>
 			 							<div class="col-xs-8 col-sm-8 col-md-8">
 			 								<div class="">
-											  <button type="button" class="btn btn-default" @click="jian">-</button>
+											  <button type="button" class="btn btn-default" @click="decrease">-</button>
 											  <input type="number" name="" v-model="num" class="form-control input-s" min="1">
 											  <button type="button" class="btn btn-default" @click="add">+</button>
 											</div>
@@ -64,7 +65,7 @@
 			 								<button type="button" style='margin-bottom:10px;' class="btn btn-default btn-pro-s"><a href="/#/inquire" style="color:#d9534f">inquire</a></button>
 			 							</div>
 			 							<div class="col-xs-12 col-sm-12 col-md-9">
-			 								<button type="button" class="btn btn-danger btn-group-lg"><i class="glyphicon glyphicon-shopping-cart"></i>&nbsp;&nbsp;Add To Baskt</button>
+			 								<button type="button" class="btn btn-danger btn-group-lg" @click="addCart"><i class="glyphicon glyphicon-shopping-cart"></i>&nbsp;&nbsp;Add To Basket</button>
 			 							</div>
 			 						</div>
 			 					</div>
@@ -233,8 +234,9 @@ export default {
       };
     },
     mounted() {
+      this.getProductDetail();
     /* banner-swiper */
-	var galleryThumbs = new Swiper('.gallery-thumbs', {
+	    var galleryThumbs = new Swiper('.gallery-thumbs', {
       spaceBetween: 10,
       slidesPerView: 4,
       freeMode: true,
@@ -268,7 +270,6 @@ export default {
         live: true
       })
       wow.init();
-      this.getProductDetail();
     },
     methods:{
     	openCode(){
@@ -277,7 +278,7 @@ export default {
     	add(){
     		this.num = Number(this.num) + 1
     	},
-    	jian(){
+      decrease(){
     		if(this.num > 0) {
     			this.num = Number(this.num) - 1
     		}
@@ -290,7 +291,6 @@ export default {
         if(res.data && res.data.data){
           this.productInfo = res.data.data
           this.productPics = res.data.data.pic
-          console.log(this.productPics, '图片列表')
         }
       },
       /*
@@ -303,6 +303,19 @@ export default {
         if(res.data && res.data.data){
           console.log(res);
         }
+      },
+      /*
+      添加购物车
+     */
+      async addCart(){
+        const { id,name_en } = this.$route.query
+        let product = {
+          id,
+          name_en,
+          num:this.num,
+          pic:this.productPics[0]
+        }
+        this.$store.commit('addCart',product)
       }
     },
     watch:{
@@ -466,8 +479,8 @@ export default {
  				position:absolute;
  				right: 0px;
  				top: 30px;
- 				width: 100px;
- 				height: 100px;
+ 				width: 120px;
+ 				height: 120px;
  				z-index: 99;
  				border:1px solid #ccc;
  				img {
@@ -479,7 +492,7 @@ export default {
  				span {
  					float: right;
  					display: inline-block;
- 					img {width: 20px;height: 20px;display: inline-block;}
+ 					img {width: 30px;height: 30px;display: inline-block;}
  				}
  			}
  		}

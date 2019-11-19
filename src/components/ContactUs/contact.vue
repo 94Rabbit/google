@@ -49,15 +49,15 @@
             <h2>Feedback</h2>
             <div class="table">
               <div class="email">
-                <input type="text" placeholder="*Email" />
+                <input type="text" placeholder="*Email" v-model="feedBackInfo.email"/>
               </div>
               <div class="name">
-                <input type="text" placeholder="*name" />
+                <input type="text" placeholder="*name" v-model="feedBackInfo.name"/>
               </div>
               <div class="message">
-                <textarea name id cols="30" rows="10" placeholder="*Message"></textarea>
+                <textarea name id cols="30" rows="10" placeholder="*Message" v-model="feedBackInfo.message"></textarea>
               </div>
-              <div class="button">submit</div>
+              <div class="button" @click="feedBack">submit</div>
             </div>
           </div>
           <div class="map col-md-6">
@@ -70,15 +70,23 @@
 </template>
 
 <script>
+import { feedbackAPI } from '@/api'
 export default {
   data() {
     return {
-      curren_id: 4
+      curren_id: 4,
+      feedBackInfo:{
+        name:'',
+        email:'',
+        message:'',
+        production_id:0
+      },
     };
   },
   methods: {
-    changeNav(e) {
-      console.log(arguments);
+    async feedBack(){
+      let res = await feedbackAPI(this.feedBackInfo);
+      console.log(res);
     }
   }
 };

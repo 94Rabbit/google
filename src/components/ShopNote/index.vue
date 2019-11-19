@@ -2,7 +2,7 @@
   <div>
     <div class="shoppingBasketIcon" @click="openList">
       <i aria-hidden="true" class="glyphicon glyphicon-shopping-cart"></i>
-      <span id="shoppingIconNum" class="shoppingIconNum">{{this.list.length}}</span>
+      <span id="shoppingIconNum" class="shoppingIconNum">{{count}}</span>
     </div>
 	<transition name="fade">
     <div id="prodInquireBasket" class="inquire-basket-listwrap" v-show="prodInquireBasket">
@@ -11,7 +11,7 @@
           <span class="basket-title-clickshow">
             <span class="basket-title-fonts">
               Inquire Basket (
-              <span id="selectInquireCount" class="basket-title-pronum">{{this.list.length}}</span>)
+              <span id="selectInquireCount" class="basket-title-pronum">{{count}}</span>)
             </span>
           </span>
           <i class="basket-title-thumb"></i>
@@ -22,12 +22,13 @@
         <div class="basket-lists-animatewrap">
           <div class="basket-lists">
             <ul class="fix">
-              <li v-for="(item,index) in list" :key="index">
+              <li v-for="(item,index) in this.$store.getters.getCartList" :key="index">
 				  <a href="javaScript:;">
-					  <img src="../../assets/img/640-220-220.jpg" height="45"/>
+					  <img :src="item.pic" height="45"/>
 				  </a>
-				   <a href="javaScript:;" title class="basket-list-name">{{item.name}}</a>
-                   <a href="javaScript:;" title class="basket-list-delate" @click="deletes(item.id)">Delete</a>
+				   <a href="javaScript:;" title class="basket-list-name">{{item.name_en}}</a>
+                   <a href="javaScript:;" title class="basket-list-delate" @click="deletes(item)">Delete</a>
+                  <i class="basket-list-delate">x <em>{{item.num}}</em></i>
 			  </li>
             </ul>
           </div>
@@ -42,46 +43,26 @@
   </div>
 </template>
 <script>
+  import { mapState } from 'vuex'
 export default {
   name: "shop",
   data() {
     return {
-	prodInquireBasket:false,
-      list: [
-        {
-		  id:0,
-          name: "Double Cone Powder Mixer blender",
-          href: "###",
-          src: "/static/img/640-220-220.jpg"
-        },
-        {
-			id:1,
-          name: "Air Classifying Mill Pulverizer",
-          href: "###",
-          src: "/static/img/1-220-220.jpg"
-        },
-        {
-			id:2,
-          name: "Rotary Basket Extruding Granulator ",
-          href: "###",
-          src: "/static/img/1-220-220(1).jpg"
-        },
-        {
-			id:3,
-          name: "Flexible Screw Auger Conveyor",
-          href: "###",
-          src: "/static/img/640-220-220(1).jpg"
-        },
-        {
-		  id:4,
-          name: "Double Cone Powder Mixer blender",
-          href: "###",
-          src: "/static/img/1-220-220.jpg"
-        }
-      ]
+	      prodInquireBasket:false
     };
   },
-  mounted() {},
+  computed:{
+      ...mapState({
+        cartList:state=>state.cartList
+      }),
+      count(){
+        let count = 0
+        this.cartList.forEach(item=>{
+          count += item.num
+        })
+        return count
+      }
+  },
   methods:{
 	  openList(){
 		  this.prodInquireBasket = true
@@ -89,18 +70,11 @@ export default {
 	  hideList(){
 		  this.prodInquireBasket = false
 	  },
-	  deletes(id){
-		  let lists = this.list
-		  // console.log(id)
-		  for(var i=0;i<lists.length;i++) {
-			  if(lists[i].id == id){
-				  lists.splice(i,1)
-				  return
-			  }
-		  }
+	  deletes(item){
+      this.$store.commit('deleteProduct',item)
 	  },
 	  basketEmpty(){
-		  this.list = []
+		  this.$store.commit('clearCart')
 	  }
   }
 };

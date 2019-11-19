@@ -8,6 +8,7 @@
         @click="changeOn(1)"
         :class="on==1?'on':''"
       >
+        <a style="position:absolute;width: 100%;height: 100%;" href="tel:+86-18605164068"></a>
         <div class="iconfont icon-dianhua1"></div>
         <span>Phone</span>
         <p>+86-18605194068</p>
@@ -19,6 +20,7 @@
         @click="changeOn(2)"
         :class="on==2?'on':''"
       >
+        <a style="position:absolute;width: 100%;height: 100%;" href="mailto:stone@doingmachine.com"></a>
         <div class="iconfont icon-youjian"></div>
         <span>Email</span>
         <p>stone@doingmachine.com</p>
@@ -30,6 +32,7 @@
         @click="changeOn(3)"
         :class="on==3?'on':''"
       >
+        <a style="position:absolute;width: 100%;height: 100%;" href="https://api.whatsapp.com/send?phone=8618605194068"></a>
         <div class="iconfont icon-dianhua"></div>
         <span>WhatsApp</span>
         <p>+86-18605194068</p>

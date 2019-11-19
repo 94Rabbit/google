@@ -25,6 +25,7 @@ export const feedbackAPI = (params) => axios.post(`${baseUrl}/api/v1/feedback`, 
 // 获取首页banner图
 export const getBannersAPI = (params) => axios.post(`${baseUrl}/api/v1/banner`, params)
 
-
+// 提交订单
+export const postOrderAPI = (params) => axios.post(`${baseUrl}/api/v1/basket/submit`, params)
 
 

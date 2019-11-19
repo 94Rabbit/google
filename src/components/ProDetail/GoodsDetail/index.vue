@@ -43,11 +43,14 @@
 </template>
 
 <script>
+import { getProductDetailAPI } from '@/api'
 export default {
-  props:['pic'],
+  // props:['pic'],
   data() {
     return {
       shareThis: ["facebook", "twitter", "linkedin", "pinterest", "sharet"],
+      pic: [],
+      productInfo:{},
       // imgs: [
       //   "//5prorwxhmplojik.ldycdn.com/cloud/loBqjKmrRinSkpqklqlq/640.jpg",
       //   "//5prorwxhmplojik.ldycdn.com/cloud/loBqjKmrRinSkpqklqlq/640.jpg",
@@ -64,13 +67,13 @@ export default {
       clentWidth: 0
     };
   },
-  mounted() {
-    console.log(this.pic, 'sahdsjahj')
+  async mounted() {
+    await this.getProductDetail()
     this.current = {
       img: this.pic[0],
       index: 0
     };
-    console.log(this.pic)
+    console.log(this.current, 'dsadashj')
     window.addEventListener("resize", this.windowResize);
   },
   beforeDestroy() {
@@ -89,7 +92,17 @@ export default {
     },
     windowResize() {
       this.clentWidth = document.body.clientWidth;
-    }
+    },
+    /*
+     获取商品图片
+    */
+    async  getProductDetail(){
+      let res = await getProductDetailAPI(this.$route.query.id);
+      if(res.data && res.data.data){
+        this.productInfo = res.data.data
+        this.pic = res.data.data.pic
+      }
+    },
   }
 };
 </script>
