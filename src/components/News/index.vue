@@ -27,7 +27,7 @@
   </div>
 </template>
 <script>
-  import  NewList  from '@/components/News/NewList'
+  import  NewList  from '@/components/News/NewsList'
   import { getNewListAPI, getNewsTypesAPI } from '@/api'
   export default {
     name: "SoftWare",

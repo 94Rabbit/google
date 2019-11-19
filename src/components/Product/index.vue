@@ -105,7 +105,6 @@ export default {
       */
       async  goProductDetail(_item){
         this.$router.push({name:"productDetail",query:_item})
-        console.log( this.$router, 2222)
       }
     }
   };

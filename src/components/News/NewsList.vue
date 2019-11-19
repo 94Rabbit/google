@@ -3,7 +3,7 @@
       <p class="new-list">{{title}}</p>
       <div class="row">
         <div class="col-sm-6 col-md-4" v-for="item in newList">
-          <div class="thumbnail">
+          <div class="thumbnail" @click="goNewsDetail(item)">
             <img :src="item.pic" alt="">
             <div class="caption">
               <h3 class="new-title">{{item.title_en}}</h3>
@@ -25,11 +25,14 @@
           }
         },
         mounted() {
-          this.getNewList()
+
         },
         methods:{
-          async getNewList(){
-              console.log(this.newList, 2222)
+          /*
+            查看新闻详情
+           */
+          async goNewsDetail(_item){
+            this.$router.push({name:"newsDetail",query:_item})
           }
         }
     }

@@ -20,7 +20,7 @@ export default new Router({
         {
           path: '/home',
           name: 'home',
-          component: resolve => require(['@/components/HomePage'], resolve),
+          component: resolve => require(['@/components/HomePage/index1'], resolve),
           meta: {
             title: '首页'
           }
@@ -58,13 +58,20 @@ export default new Router({
         title: '产品详情'
       }
     },
-
     {
       path: '/news',
       name: 'news',
       component: resolve => require(['@/components/News'], resolve),
       meta: {
         title: '新闻列表'
+      }
+    },
+    {
+      path: '/news/newsDetail',
+      name: 'newsDetail',
+      component: resolve => require(['@/components/News/NewsDetail'], resolve),
+      meta: {
+        title: '新闻详情'
       }
     },
     {

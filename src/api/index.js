@@ -16,8 +16,14 @@ export const getNewsTypesAPI = (params) => axios.post(`${baseUrl}/api/v1/news/ty
 // 获取新闻列表
 export const getNewListAPI = (params) => axios.post(`${baseUrl}/api/v1/news`, params)
 
-//feedback
+// 获取新闻详情
+export const getNewsDetailAPI = (id) => axios.post(`${baseUrl}/api/v1/news/${id}`, {})
+
+// 反馈接口
 export const feedbackAPI = (params) => axios.post(`${baseUrl}/api/v1/feedback`, params)
+
+// 获取首页banner图
+export const getBannersAPI = (params) => axios.post(`${baseUrl}/api/v1/banner`, params)
 
 
 
