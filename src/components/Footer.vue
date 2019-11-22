@@ -28,7 +28,7 @@
             </div>
             <transition name="expand" class="expand">
               <div class="list" v-show="show1">
-                <router-link tag="div" class="tab-item listItem" to="/index">
+                <router-link tag="div" class="tab-item listItem" to="/home">
                   <span class="tab-link">Home</span>
                 </router-link>
                 <router-link tag="div" class="tab-item listItem" to="/products">
@@ -37,10 +37,10 @@
                 <router-link tag="div" class="tab-item listItem" to="/news">
                   <span class="tab-link">News</span>
                 </router-link>
-                <router-link tag="div" class="tab-item listItem" to="/about">
+                <router-link tag="div" class="tab-item listItem" to="/aboutus">
                   <span class="tab-link">About Us</span>
                 </router-link>
-                <router-link tag="div" class="tab-item listItem" to="/contact">
+                <router-link tag="div" class="tab-item listItem" to="/contactus">
                   <span class="tab-link">Contact Us</span>
                 </router-link>
               </div>
@@ -59,19 +59,19 @@
             </div>
             <transition name="expand" class="expand">
               <div class="list" v-show="show2">
-                <router-link tag="div" class="tab-item listItem" to="/index">
+                <router-link tag="div" class="tab-item listItem" to="/products">
                   <span class="tab-link">Industrial Dryer</span>
                 </router-link>
                 <router-link tag="div" class="tab-item listItem" to="/products">
                   <span class="tab-link">Impact Mill</span>
                 </router-link>
-                <router-link tag="div" class="tab-item listItem" to="/news">
+                <router-link tag="div" class="tab-item listItem" to="/products">
                   <span class="tab-link">Powder Mixer</span>
                 </router-link>
-                <router-link tag="div" class="tab-item listItem" to="/about">
+                <router-link tag="div" class="tab-item listItem" to="/products">
                   <span class="tab-link">Wet Granulator</span>
                 </router-link>
-                <router-link tag="div" class="tab-item listItem" to="/contact">
+                <router-link tag="div" class="tab-item listItem" to="/products">
                   <span class="tab-link">Conveying Equipment</span>
                 </router-link>
               </div>
@@ -85,11 +85,11 @@
             <div class="list">
               <div class="listItem bot">
                 <img src="//5prorwxhmplojik.ldycdn.com/cloud/ilBqjKmrRinSilkqprlo/weixin.png" alt />
-                <span>18605194068</span>
+                <a href="https://api.whatsapp.com/send?phone=8618605194068" style="text-decoration: none;color:#fff"><span>18605194068</span></a>
               </div>
               <div class="listItem bot">
                 <img src="//5prorwxhmplojik.ldycdn.com/cloud/ikBqjKmrRinSilkqqrlo/dainhua.png" alt />
-                <span>+86-18605194068</span>
+                <a href="tel:+86-18605164068" style="text-decoration: none;color:#fff"><span>+86-18605194068</span></a>
               </div>
               <div class="listItem bot">
                 <img
@@ -97,7 +97,7 @@
                   alt
                   srcset
                 />
-                <span>stone@doingmachine.com</span>
+                <a href="mailto:stone@doingmachine.com" style="text-decoration: none;color:#fff"><span>stone@doingmachine.com</span></a>
               </div>
             </div>
           </div>

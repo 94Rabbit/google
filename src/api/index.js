@@ -28,4 +28,8 @@ export const getBannersAPI = (params) => axios.post(`${baseUrl}/api/v1/banner`, 
 // 提交订单
 export const postOrderAPI = (params) => axios.post(`${baseUrl}/api/v1/basket/submit`, params)
 
+// 根据id查询相关产品
+export const getRelatedProductAPI = (id) => axios.post(`${baseUrl}/api/v1/related/productions/${id}`,{})
 
+// 根据id查询先不管
+export const getRelatedNewsAPI = (id) => axios.post(`${baseUrl}/api/v1/related/news/${id}`,{})

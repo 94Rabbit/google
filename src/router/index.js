@@ -48,10 +48,52 @@ export default new Router({
       component: resolve => require(['@/components/Product'], resolve),
       meta: {
         title: '产品列表'
-      }
+      },
+      children: [
+        {
+          path: 'industrial Dryer',
+          name: 'industrial Dryer',
+          component: resolve => require(['@/components/Product'], resolve),
+          meta: {
+            title: '产品列表'
+          }
+        },
+        {
+          path: 'Impact Mill',
+          name: 'Impact Mill',
+          component: resolve => require(['@/components/Product'], resolve),
+          meta: {
+            title: '产品列表'
+          }
+        },
+        {
+          path: 'Powder Mixer',
+          name: 'Powder Mixer',
+          component: resolve => require(['@/components/Product'], resolve),
+          meta: {
+            title: '产品列表'
+          }
+        },
+        {
+          path: 'Wet Granulator',
+          name: 'Wet Granulator',
+          component: resolve => require(['@/components/Product'], resolve),
+          meta: {
+            title: '产品列表'
+          }
+        },
+        {
+          path: 'Conveying Equipment',
+          name: 'Conveying Equipment',
+          component: resolve => require(['@/components/Product'], resolve),
+          meta: {
+            title: '产品列表'
+          }
+        }
+      ]
     },
     {
-      path: '/products/productDetail',
+      path: 'productDetail',
       name: 'productDetail',
       component: resolve => require(['@/components/ProDetail'], resolve),
       meta: {

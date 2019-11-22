@@ -44,10 +44,11 @@
 			 				<div class="col-xs-12 col-sm-12 col-md-6">
 			 					<div class="pro-de-rf">
 			 						<div class="p-h-t">
-				 						<h4>Double Cone Powder Mixer blender<span @click="openCode"><img src="https://www.doingmachine.com/phoenix/admin/prod/qrcode/21326924"></span></h4>
-                      <div v-show="currPic" ><img src="https://www.doingmachine.com/phoenix/admin/prod/qrcode/21326924"></div>
+				 						<h4>{{productInfo.name_en}}<span @click="openCode"><img src="https://www.doingmachine.com/phoenix/admin/prod/qrcode/21326924"></span></h4>
+                      <div v-show="currPic"><div id="qrcode"></div></div>
+<!--                    <img src="https://www.doingmachine.com/phoenix/admin/prod/qrcode/21326924">-->
 				 					</div>
-			 						<p>SZH series double cone powder mixer blender is most often used for intimate mixing of dry powder or small granules with good flowability.</p>
+			 						<p v-html="productInfo.introduction"></p>
 			 						<div class="row" style="padding: 10px 0">
 			 							<div class="col-xs-4 col-sm-4 col-md-4">
 			 								quitity:
@@ -62,7 +63,7 @@
 			 						</div>
 			 						<div class="row" style="padding: 15px 0;">
 			 							<div class="col-xs-12 col-sm-12 col-md-3">
-			 								<button type="button" style='margin-bottom:10px;' class="btn btn-default btn-pro-s"><a href="/#/inquire" style="color:#d9534f">inquire</a></button>
+			 								<button type="button" style='margin-bottom:10px;' class="btn btn-default btn-pro-s"><a @click="goOrderList" style="color:#d9534f">inquire</a></button>
 			 							</div>
 			 							<div class="col-xs-12 col-sm-12 col-md-9">
 			 								<button type="button" class="btn btn-danger btn-group-lg" @click="addCart"><i class="glyphicon glyphicon-shopping-cart"></i>&nbsp;&nbsp;Add To Basket</button>
@@ -145,26 +146,50 @@
 		 			<div class="pro-d-relat">
 		 				<h3>Related Products</h3>
 		 				<div class="row">
-		 					<div class="col-xs-12 col-sm-6 col-md-3">
-		 						<a href="##">
-		 							<img src="../../assets/img/640-300-300.jpg">
-		 						</a>
-		 						<a href="">{{productInfo.related_productions}}</a>
-		 					</div>
-		 					<div class="col-xs-12 col-sm-6 col-md-3">
-		 						<a href="##">
-		 							<img src="../../assets/img/640-220-220 (1).jpg">
-		 						</a>
-		 						<a href="">{{productInfo.related_productions}}</a>
-		 					</div>
+<!--		 					<div class="col-xs-12 col-sm-6 col-md-3">-->
+<!--		 						<a href="##">-->
+<!--		 							<img src="../../assets/img/640-300-300.jpg">-->
+<!--		 						</a>-->
+<!--		 						<a href="">{{productInfo.related_productions}}</a>-->
+<!--		 					</div>-->
+<!--		 					<div class="col-xs-12 col-sm-6 col-md-3">-->
+<!--		 						<a href="##">-->
+<!--		 							<img src="../../assets/img/640-220-220 (1).jpg">-->
+<!--		 						</a>-->
+<!--		 						<a href="">{{productInfo.related_productions}}</a>-->
+<!--		 					</div>-->
+              <div class="product-banner swiper-container">
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide" v-for="item in relatedProduct">
+                    <img
+                      style="display: block;width:200px;height: 200px;margin: 0 auto"
+                      :src="item.pic[0]"
+                      alt
+                    />
+                    <div class="info" style="text-align: center">{{item.name_en}}</div>
+                  </div>
+                </div>
+<!--                <div class="swiper-pagination"></div>-->
+                <div class="swiper-button-next control-direction">＞</div>
+                <div class="swiper-button-prev control-direction">＜</div>
+              </div>
 		 				</div>
             <h3>Related News</h3>
             <div class="row">
-              <div class="col-xs-12 col-sm-6 col-md-3">
-                <a href="##">
-                  <img src="../../assets/img/640-220-220 (1).jpg">
-                </a>
-                <a href="">{{productInfo.related_news}}</a>
+              <div class="news-banner swiper-container">
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide" v-for="item in relatedNews">
+                    <img
+                      style="display: block;width:200px;height: 200px;margin: 0 auto"
+                      :src="item.pic"
+                      alt
+                    />
+                    <div class="info" style="text-align: center">{{item.title_en}}</div>
+                  </div>
+                </div>
+<!--                <div class="swiper-pagination"></div>-->
+                <div class="swiper-button-next control-direction">＞</div>
+                <div class="swiper-button-prev control-direction">＜</div>
               </div>
             </div>
 		 			</div>
@@ -181,7 +206,8 @@
   import { WOW } from 'wowjs';
   import  ShopNote  from '@/components/ShopNote'
   import goodsDetail from "./GoodsDetail";
-  import { getProductDetailAPI, feedbackAPI } from '@/api'
+  import { getProductDetailAPI, feedbackAPI, getRelatedProductAPI, getRelatedNewsAPI } from '@/api'
+  import QRCode from 'qrcodejs2'
 export default {
     name: "ProDetail",
     components: {
@@ -230,11 +256,16 @@ export default {
           }
         ],
         currPic:false,
-        num:0
+        num:1,
+        qrcode: null,
+        relatedProduct:[],
+        relatedNews: []
       };
     },
-    mounted() {
+    async mounted() {
       this.getProductDetail();
+      await this.getRelatedProduct();
+      await this.getRelatedNews();
     /* banner-swiper */
 	    var galleryThumbs = new Swiper('.gallery-thumbs', {
       spaceBetween: 10,
@@ -245,6 +276,42 @@ export default {
       observeParents:false,   //注意这里！！
 			observer:true, //也要注意这里！
     });
+	    /*相关产品*/
+      new Swiper(".product-banner", {
+        slidesPerView: 1,
+        spaceBetween: 30,
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true
+        },
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev"
+        },
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true
+        },
+        loop: true
+      });
+      /*相关新闻*/
+      new Swiper(".news-banner", {
+        slidesPerView: 1,
+        spaceBetween: 30,
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true
+        },
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev"
+        },
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true
+        },
+        loop: true
+      });
       new Swiper('.gallery-top', {
 	      spaceBetween: 1,
 	      loop:true,
@@ -274,6 +341,12 @@ export default {
     methods:{
     	openCode(){
     		this.currPic=!this.currPic
+        if(this.qrcode){
+          this.qrcode.clear() //清除二维码
+        }
+        else{
+          this.createQrcode();
+        }
     	},
     	add(){
     		this.num = Number(this.num) + 1
@@ -316,6 +389,48 @@ export default {
           pic:this.productPics[0]
         }
         this.$store.commit('addCart',product)
+      },
+      /*
+     生成二维码地址
+    */
+      createQrcode() {
+        this.qrcode = new QRCode('qrcode', {
+          width:120,
+          height:120,
+          text: 'https://www.baidu.com', // 需要二维码跳转的地址
+          colorDark : "black", //前景色
+          colorLight : "#fff", //背景色
+        })
+      },
+      /*
+       获取相关商品
+      */
+      async getRelatedProduct() {
+        let id = this.$route.query.id
+        let res = await getRelatedProductAPI(id)
+        this.relatedProduct = res.data.data
+      },
+      /*
+      获取相关商品
+     */
+      async getRelatedNews() {
+        let id = this.$route.query.id
+        let res = await getRelatedNewsAPI(id)
+        this.relatedNews = res.data.data
+        console.log(this.relatedNews, '相关新闻')
+      },
+      /*
+      进入订单信息
+     */
+      goOrderList(){
+        const { id,name_en } = this.$route.query
+        let product = {
+          id,
+          name_en,
+          num:this.num,
+          pic:this.productPics[0]
+        }
+        this.$router.push({name:'inquire',query:{isCart:false,product}})
       }
     },
     watch:{
@@ -362,6 +477,18 @@ export default {
     }
     .gallery-thumbs .swiper-slide-thumb-active {
       opacity: 1;
+    }
+    .control-direction{
+      background-image: none;
+      width:30px;
+      height: 30px;
+      border-radius: 15px;
+      line-height: 30px;
+      text-align: center;
+      outline: none;
+      color:#fff;
+      background: #869791;
+      opacity: .5;
     }
 @media screen and (max-width: 997px) {
   .gallery-thumbs {
@@ -478,7 +605,7 @@ export default {
  			div {
  				position:absolute;
  				right: 0px;
- 				top: 30px;
+ 				/*top: 30px;*/
  				width: 120px;
  				height: 120px;
  				z-index: 99;

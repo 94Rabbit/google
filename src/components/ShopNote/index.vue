@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="shoppingBasketIcon" @click="openList">
+    <div v-show="this.$store.state.cartList.length>0" class="shoppingBasketIcon" @click="openList">
       <i aria-hidden="true" class="glyphicon glyphicon-shopping-cart"></i>
       <span id="shoppingIconNum" class="shoppingIconNum">{{count}}</span>
     </div>
@@ -34,7 +34,7 @@
           </div>
           <div class="basket-btns fix">
             <button id="basketEmpty" type="button" @click="basketEmpty">Empty</button>
-            <button id="basketInquire" class="flr" type="submit"><a href="/#/inquire" style="color:#fff">inquire</a></button>
+            <span id="basketInquire" class="flr" type='button' style="background: red;padding:0 10px" @click="goOrderList"><a style="color:#fff;text-decoration: none;cursor: pointer">inquire</a></span>
           </div>
         </div>
       </form>
@@ -75,7 +75,10 @@ export default {
 	  },
 	  basketEmpty(){
 		  this.$store.commit('clearCart')
-	  }
+	  },
+    goOrderList(){
+	    this.$router.push({name:'inquire',query:{isCart:true}})
+    }
   }
 };
 </script>

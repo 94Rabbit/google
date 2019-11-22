@@ -26,41 +26,21 @@
         </div>
         <div class="banner2 swiper-container">
           <div class="swiper-wrapper">
-            <div class="swiper-slide">
+            <div class="swiper-slide" v-for="item in hotProducts">
               <img
-                src="//5prorwxhmplojik.ldycdn.com/cloud/liBqjKmrRinSpmrjmmlp/640-200-200.jpg"
+                style="display: block;width:200px;height: 200px;margin: 0 auto"
+                :src="item.pic[0]"
                 alt
               />
-              <div class="info">Rotary Vacuum Paddle Dryer</div>
+              <div class="info">{{item.name_en}}</div>
             </div>
-            <div class="swiper-slide">
-              <img
-                src="//5prorwxhmplojik.ldycdn.com/cloud/liBqjKmrRinSpmrjmmlp/640-200-200.jpg"
-                alt
-              />
-              <div class="info">Rotary Vacuum Paddle Dryer</div>
-            </div>
-            <div class="swiper-slide">
-              <img
-                src="//5prorwxhmplojik.ldycdn.com/cloud/liBqjKmrRinSpmrjmmlp/640-200-200.jpg"
-                alt
-              />
-              <div class="info">Rotary Vacuum Paddle Dryer</div>
-            </div>
-            <div class="swiper-slide">
-              <img
-                src="//5prorwxhmplojik.ldycdn.com/cloud/liBqjKmrRinSpmrjmmlp/640-200-200.jpg"
-                alt
-              />
-              <div class="info">Rotary Vacuum Paddle Dryer</div>
-            </div>
-            <div class="swiper-slide">
-              <img
-                src="//5prorwxhmplojik.ldycdn.com/cloud/liBqjKmrRinSpmrjmmlp/640-200-200.jpg"
-                alt
-              />
-              <div class="info">Rotary Vacuum Paddle Dryer</div>
-            </div>
+<!--            <div class="swiper-slide">-->
+<!--              <img-->
+<!--                src="//5prorwxhmplojik.ldycdn.com/cloud/liBqjKmrRinSpmrjmmlp/640-200-200.jpg"-->
+<!--                alt-->
+<!--              />-->
+<!--              <div class="info">Rotary Vacuum Paddle Dryer</div>-->
+<!--            </div>-->
           </div>
           <!-- Add Pagination -->
           <div class="swiper-pagination"></div>
@@ -98,26 +78,26 @@
           </div>
 
           <div class="iconItem">
-            <img src="//5ororwxhmplorik.ldycdn.com/cloud/irBqjKmrRinSrlpjkjlo/tubiao1.jpg" alt />
+            <img src="//5qrorwxhmploiik.ldycdn.com/cloud/iiBqjKmrRinSrlpjljlo/tubiao2.jpg" alt />
             <p class="iconIntroduce">
-              Advanced Pilot Plant
-              <br />Free material tests to provide detailed design data
+              Experienced Technicial Team
+              <br /> Has more than 20 year's experiences
             </p>
           </div>
 
           <div class="iconItem">
-            <img src="//5ororwxhmplorik.ldycdn.com/cloud/irBqjKmrRinSrlpjkjlo/tubiao1.jpg" alt />
+            <img src="//5qrorwxhmploiik.ldycdn.com/cloud/ijBqjKmrRinSrlpjnjlo/tubiao3.jpg" alt />
             <p class="iconIntroduce">
-              Advanced Pilot Plant
-              <br />Free material tests to provide detailed design data
+              Skilled Workers
+              <br /> Specially trained workers pay close attention to details
             </p>
           </div>
 
           <div class="iconItem">
-            <img src="//5ororwxhmplorik.ldycdn.com/cloud/irBqjKmrRinSrlpjkjlo/tubiao1.jpg" alt />
+            <img src="//5ororwxhmplorik.ldycdn.com/cloud/ikBqjKmrRinSrlpjojlo/tubiao4.jpg" alt />
             <p class="iconIntroduce">
-              Advanced Pilot Plant
-              <br />Free material tests to provide detailed design data
+              Professional After Service
+              <br /> Reach customers in short notice for installation and commissioning
             </p>
           </div>
         </div>
@@ -127,66 +107,14 @@
     <div class="products">
       <div class="container">
         <div class="productList col-md-12">
-          <div class="productItem col-md-3">
+          <div class="productItem col-md-3" v-for="item in mainProducts">
             <div class="imgBox">
-              <img src="//5prorwxhmplojik.ldycdn.com/cloud/opBqjKmrRinSjlppmilq/zhu.jpg" alt />
+              <img :src="item.pic[0]" alt />
             </div>
-            <div class="prodInfo">
-              <div class="title">Double shaft paddle dryer</div>
+            <div class="prodInfo" style="width:95%">
+              <div class="title">{{item.name_en}}</div>
               <div class="info">
-                Double shaft paddle dryer
-                Economical, compact and safe
-                thermal processing for drying, heating and cooling
-              </div>
-            </div>
-            <div class="readmore col-md-12">
-              <div class="more">READ MORE</div>
-            </div>
-          </div>
-
-          <div class="productItem col-md-3">
-            <div class="imgBox">
-              <img src="//5prorwxhmplojik.ldycdn.com/cloud/opBqjKmrRinSjlppmilq/zhu.jpg" alt />
-            </div>
-            <div class="prodInfo">
-              <div class="title">Double shaft paddle dryer</div>
-              <div class="info">
-                Double shaft paddle dryer
-                Economical, compact and safe
-                thermal processing for drying, heating and cooling
-              </div>
-            </div>
-            <div class="readmore col-md-12">
-              <div class="more">READ MORE</div>
-            </div>
-          </div>
-          <div class="productItem col-md-3">
-            <div class="imgBox">
-              <img src="//5prorwxhmplojik.ldycdn.com/cloud/opBqjKmrRinSjlppmilq/zhu.jpg" alt />
-            </div>
-            <div class="prodInfo">
-              <div class="title">Double shaft paddle dryer</div>
-              <div class="info">
-                Double shaft paddle dryer
-                Economical, compact and safe
-                thermal processing for drying, heating and cooling
-              </div>
-            </div>
-            <div class="readmore col-md-12">
-              <div class="more">READ MORE</div>
-            </div>
-          </div>
-          <div class="productItem col-md-3">
-            <div class="imgBox">
-              <img src="//5prorwxhmplojik.ldycdn.com/cloud/opBqjKmrRinSjlppmilq/zhu.jpg" alt />
-            </div>
-
-            <div class="prodInfo">
-              <div class="title">Double shaft paddle dryer</div>
-              <div class="info">
-                Double shaft paddle dryer
-                Economical, compact and safe
-                thermal processing for drying, heating and cooling
+                {{item.main_introduction}}
               </div>
             </div>
             <div class="readmore col-md-12">
@@ -201,8 +129,7 @@
 
 <script>
 import Swiper from "swiper";
-import { getBannersAPI } from '@/api'
-
+import { getBannersAPI, getProductAPI } from '@/api'
 export default {
   data() {
     return {
@@ -237,7 +164,10 @@ export default {
           text:
             "//5ororwxhmplorik.ldycdn.com/cloud/ioBqjKmrRinSillirnln/lunbo3-zi.png"
         }
-      ]
+      ],
+      productList: [],
+      hotProducts: [],
+      mainProducts: []
     };
   },
   created() {},
@@ -246,7 +176,8 @@ export default {
       console.log(arguments);
     }
   },
-  mounted() {
+  async mounted() {
+    await this.getProduct({});
     var swiper = new Swiper(".banner1", {
       loop: true,
       // autoplay: {
@@ -260,7 +191,7 @@ export default {
       }
     });
     var swiper2 = new Swiper(".banner2", {
-      slidesPerView: 3,
+      slidesPerView: 1,
       spaceBetween: 30,
       pagination: {
         el: ".swiper-pagination",
@@ -289,8 +220,22 @@ export default {
       if(res && res.data && res.data.data){
         this.bannerList = res.data.data
       }
+    },
+    async getProduct(_param){
+      let res = await getProductAPI(_param);
+      this.productList = res.data.data
+      this.hotProducts  = res.data.data.filter(el=>{
+        return el.is_hot === '是'
+      })
+      this.mainProducts = res.data.data.filter(el=>{
+        return el.is_main === '是'
+      })
+      if(this.mainProducts.length>=4){
+        this.mainProducts.splice(3,1)
+      }
+      console.log(this.hotProducts, this.mainProducts)
+      }
     }
-  }
 };
 </script>
 
@@ -312,7 +257,7 @@ export default {
       width: 12px !important;
       height: 12px !important;
       margin-right: 5px !important;
-      opacity: 1px !important;
+      opacity: 1 !important;
       border-color: #f00 !important;
     }
 
@@ -431,7 +376,7 @@ export default {
       }
       h2 {
         font-family: Open Sans;
-        font-size: 14px;
+        font-size: 18px;
         color: #545454;
         letter-spacing: 0;
         line-height: 1.7em;
@@ -448,15 +393,19 @@ export default {
       padding-bottom: 58px;
     }
     .swiper-slide {
-      width: 226px;
+      /*width: 226px;*/
+      width: 100%;
       text-align: center;
       font-size: 14px;
       background: #fff;
       cursor: pointer;
       .info {
         margin-top: 5px;
-        font-size: 14px;
+        font-size: 18px;
         color: #545454;
+        /*overflow: hidden;!*超出部分隐藏*!*/
+        /*text-overflow:ellipsis;!* 超出部分显示省略号 *!*/
+        /*white-space: nowrap;!*规定段落中的文本不进行换行 *!*/
       }
       .info:hover {
         color: red;
@@ -594,6 +543,9 @@ export default {
             font-size: 14px;
             color: #999;
             padding-bottom: 20px;
+            overflow: hidden;/*超出部分隐藏*/
+            text-overflow:ellipsis;/* 超出部分显示省略号 */
+            white-space: nowrap;/*规定段落中的文本不进行换行 */
           }
         }
       }

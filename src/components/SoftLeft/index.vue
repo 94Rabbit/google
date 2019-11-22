@@ -2,9 +2,11 @@
 	<div>
 	<div class="software-l-o">
 		<h4>PRODUCT CATEGORY</h4>
-		<ul>
-			<li v-for="(item,index) in protype" :key="index"><a :href="item.href">{{item.name}}</a></li>
-		</ul>
+    <ul>
+      <router-link v-for="(item,index) in productTypes" :key="index"  :to="'/products/'+item.path">
+        <li>{{item.name_en}}</li>
+      </router-link>
+    </ul>
 	</div>
 	<div class="software-l-o" v-show="!message">
 		<h4>CONTACT US</h4>
@@ -18,6 +20,7 @@
 	</div>
 </template>
 <script>
+import { getProductTypeAPI } from '@/api'
 export default {
 	name: "SoftLeft",
 	props: {
@@ -29,6 +32,7 @@ export default {
 	},
     data() {
       return {
+        productTypes:[],
       	protype:[
       	{name:'Industrial Dryer',href:'###'},
       	{name:'Impact Mill',href:'###'},
@@ -43,8 +47,25 @@ export default {
       	]
       };
     },
-    mounted() {
-      
+    async mounted() {
+      await this.getProductType()
+    },
+    methods:{
+      /*
+          获取左侧商品类型
+         */
+      async getProductType(){
+        let res = await getProductTypeAPI({});
+        if(res.data && res.data.data){
+          this.productTypes = res.data.data
+          this.productTypes[0].path = this.productTypes[0].name_en
+          this.productTypes[1].path = this.productTypes[1].name_en
+          this.productTypes[2].path = this.productTypes[2].name_en
+          this.productTypes[3].path = this.productTypes[3].name_en
+          this.productTypes[4].path = this.productTypes[4].name_en
+          console.log(this.productTypes,'类型')
+        }
+      },
     }
   };
 </script>

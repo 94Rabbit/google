@@ -16,13 +16,13 @@
         <ul class="nav navbar-nav navbar-right" >
           <li><router-link to="/Home">Home</router-link></li>
           <li class="dropdown">
-            <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><router-link to="/products">Products</router-link><span class="caret"></span></a>
+            <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><router-link style="text-decoration: none;color:#777" to="/products">Products</router-link><span class="caret"></span></a>
             <ul class="dropdown-menu">
-              <li><a href="#">Industrial Dryer</a></li>
-              <li><a href="#">Impact Mill</a></li>
-              <li><a href="#">Powder Mixer</a></li>
-              <li><a href="#">Wet Granulator</a></li>
-              <li><a href="#">Conveying Equipment</a></li>
+              <li><router-link to="/products/Industrial Dryer">Industrial Dryer</router-link></li>
+              <li><router-link to="/products/Impact Mill">Impact Mill</router-link></li>
+              <li><router-link to="/products/Powder Mixer">Powder Mixer</router-link></li>
+              <li><router-link to="/products/Wet Granulator">Wet Granulator</router-link></li>
+              <li><router-link to="/products/Conveying Equipment">Conveying Equipment</router-link></li>
             </ul>
           </li>
           <li><router-link to="/news">News</router-link></li>
@@ -58,23 +58,22 @@ export default {
           children: [
             {
               name: "industrial Dryer",
-              path: "/products/smartTown"
+              path: "industrial Dryer"
             },
             {
               name: "impact Mill",
-              path: "/products/bigData"
             },
             {
               name: "Power Mixer",
-              path: "/products/smartTown"
+              path: "/"
             },
             {
               name: "Wet Granulator",
-              path: "/products/bigData"
+              path: "/"
             },
             {
               name: "Conveying Equipment",
-              path: "/products/bigData"
+              path: "/"
             }
           ],
         },

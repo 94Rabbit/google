@@ -102,7 +102,8 @@ export default {
       }
   },
   mounted(){
-      this.list = this.$store.getters.getCartList
+      let isCart = this.$route.query.isCart
+      this.list = isCart ? this.$store.getters.getCartList : [this.$route.query.product]
   },
   methods:{
      //  submits(){

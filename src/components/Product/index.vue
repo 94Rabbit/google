@@ -3,21 +3,7 @@
 		 <div class="container-fuild software-box">
 		 	<div class="row">
 		 		<div class="col-xs-12 col-sm-4 col-md-3">
-		 			<div class="software-l-o">
-		 				<h4>PRODUCT CATEGORY</h4>
-		 				<ul>
-		 					<li v-for="(item,index) in productTypes" :key="index">{{item.name_en}}</li>
-		 				</ul>
-		 			</div>
-		 			<div class="software-l-o">
-		 				<h4>CONTACT US</h4>
-		 				<div class="software-l-n">
-		 				<div v-for="(item,index) in concat" :key="index">
-		 					<p>{{item.name}} <br/>{{item.concat}}  </p>
-		 				</div>
-		 				<p></p>
-		 				</div>
-		 			</div>
+          <soft-left></soft-left>
 		 		</div>
 		 		<div class="col-xs-12 col-sm-8 col-md-9">
 		 			<div class="software-r">
@@ -29,7 +15,7 @@
                     </div>
                     <div class="soft-m"><p><a :href="item.href">{{item.name_en}}</a></p></div>
                     <div class="soft-f">
-                      <button>
+                      <button @click="goOrderList(item)">
                         <i class="glyphicon glyphicon-envelope" aria-hidden="true"></i>Inquire</button>
                         <a href="##">
                           <i class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></i>
@@ -48,12 +34,14 @@
 	</div>
 </template>
 <script>
-import  ShopNote  from '@/components/ShopNote'
+import ShopNote  from '@/components/ShopNote'
+import SoftLeft from "@/components/SoftLeft"
 import { getProductAPI, getProductTypeAPI } from '@/api'
 export default {
 	name: "SoftWare",
 	components: {
       "shop-note": ShopNote,
+      "soft-left": SoftLeft,
     },
     data() {
       return {
@@ -91,6 +79,12 @@ export default {
         let res = await getProductTypeAPI({});
         if(res.data && res.data.data){
           this.productTypes = res.data.data
+          this.productTypes[0].path = this.productTypes[0].name_en
+          this.productTypes[1].path = this.productTypes[1].name_en
+          this.productTypes[2].path = this.productTypes[2].name_en
+          this.productTypes[3].path = this.productTypes[3].name_en
+          this.productTypes[4].path = this.productTypes[4].name_en
+          console.log(this.productTypes,'类型')
         }
       },
       /*
@@ -118,6 +112,20 @@ export default {
           pic:pic[0]
         }
         this.$store.commit('addCart',product)
+      },
+      /*
+        查看订单详情
+       */
+      goOrderList(item){
+        console.log(item);
+        const { id,name_en } = item
+        let product = {
+          id,
+          name_en,
+          num:1,
+          pic:item.pic[0]
+        }
+        this.$router.push({name:'inquire',query:{isCart:false,product}})
       }
     }
   };
