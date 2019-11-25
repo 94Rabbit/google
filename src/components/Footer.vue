@@ -5,7 +5,8 @@
         <div class="main col-md-12">
           <div class="item share col-md-3">
             <div class="log">
-              <img src="//5ororwxhmplorik.ldycdn.com/cloud/iiBqjKmrRinSrljnpilo/yejiao.png" alt />
+<!--              <img src="//5ororwxhmplorik.ldycdn.com/cloud/iiBqjKmrRinSrljnpilo/yejiao.png" alt />-->
+              <img src="@/assets/img/logo.png" alt="" style="width:100%;position:relative; left:-30px;">
             </div>
             <div class="shareList">
               <span class="twitter"></span>
@@ -85,11 +86,11 @@
             <div class="list">
               <div class="listItem bot">
                 <img src="//5prorwxhmplojik.ldycdn.com/cloud/ilBqjKmrRinSilkqprlo/weixin.png" alt />
-                <a href="https://api.whatsapp.com/send?phone=8618605194068" style="text-decoration: none;color:#fff"><span>18605194068</span></a>
+                <a href="https://api.whatsapp.com/send?phone=13341624188" style="text-decoration: none;color:#fff"><span>13341624188</span></a>
               </div>
               <div class="listItem bot">
                 <img src="//5prorwxhmplojik.ldycdn.com/cloud/ikBqjKmrRinSilkqqrlo/dainhua.png" alt />
-                <a href="tel:+86-18605164068" style="text-decoration: none;color:#fff"><span>+86-18605194068</span></a>
+                <a href="tel:+86-13341624188" style="text-decoration: none;color:#fff"><span>+86-13341624188</span></a>
               </div>
               <div class="listItem bot">
                 <img

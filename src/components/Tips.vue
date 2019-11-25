@@ -11,7 +11,7 @@
         <a style="position:absolute;width: 100%;height: 100%;" href="tel:+86-18605164068"></a>
         <div class="iconfont icon-dianhua1"></div>
         <span>Phone</span>
-        <p>+86-18605194068</p>
+        <p>+86-13341624188</p>
       </div>
       <div
         class="tipItem"
@@ -35,7 +35,7 @@
         <a style="position:absolute;width: 100%;height: 100%;" href="https://api.whatsapp.com/send?phone=8618605194068"></a>
         <div class="iconfont icon-dianhua"></div>
         <span>WhatsApp</span>
-        <p>+86-18605194068</p>
+        <p>+86-13341624188</p>
       </div>
     </div>
     <div class="top" v-if="btnFlag" @click="backTop"></div>

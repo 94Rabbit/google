@@ -44,8 +44,8 @@
           {name:'INDUSTRY NEWS', type:2}
         ],
         concat:[
-          {name:'WECHAT/WHATSAPP',concat:'18605194068'},
-          {name:'TE',concat:'+86-18605194068'},
+          {name:'WECHAT/WHATSAPP',concat:'13341624188'},
+          {name:'TE',concat:'+86-13341624188'},
           {name:'W-MAIL',concat:'stone@doingmachine.com'}
         ],
         list:[

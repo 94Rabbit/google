@@ -13,7 +13,7 @@
           	</div>
           </div>
           <div class="col-xs-12 col-sm-12 col-md-6 about-img">
-          	<img class="lazy" src="../../assets/img/gongsi.jpg" alt="gongsi" title="gongsi" style="visibility: visible;">
+          	<img class="lazy" src="@/assets/img/shantui1.jpg" alt="gongsi" title="gongsi" style="visibility: visible;">
           </div>
           <div class="col-xs-12 col-sm-12 col-md-12">
           	<div class="about-i">
@@ -22,22 +22,22 @@
           </div>
           <div class="col-xs-12 col-sm-12 col-md-3">
             <div class="about-p">
-              <img class="lazy" src="../../assets/img/tu1.jpg" alt="tu3" title="tu3" style="visibility: visible;">
+              <img class="lazy" src="@/assets/img/shantui2.jpg" alt="tu3" title="tu3" style="visibility: visible;">
             </div>
           </div>
           <div class="col-xs-12 col-sm-12 col-md-3">
             <div class="about-p">
-              <img class="lazy" src="../../assets/img/tu2.jpg" alt="tu3" title="tu3" style="visibility: visible;">
+              <img class="lazy" src="@/assets/img/shantui3.jpg" alt="tu3" title="tu3" style="visibility: visible;">
             </div>
           </div>
           <div class="col-xs-12 col-sm-12 col-md-3">
             <div class="about-p">
-              <img class="lazy" src="../../assets/img/tu3.jpg" alt="tu3" title="tu3" style="visibility: visible;">
+              <img class="lazy" src="@/assets/img/shantui4.jpg" alt="tu3" title="tu3" style="visibility: visible;">
             </div>
           </div>
           <div class="col-xs-12 col-sm-12 col-md-3">
             <div class="about-p">
-              <img class="lazy" src="../../assets/img/tu4.jpg" alt="tu3" title="tu3" style="visibility: visible;">
+              <img class="lazy" src="@/assets/img/shantui5.jpg" alt="tu3" title="tu3" style="visibility: visible;">
             </div>
           </div>
 
@@ -98,17 +98,17 @@
 
           <div class="col-xs-12 col-sm-12 col-md-4">
             <div class="about-p">
-              <img class="lazy" src="../../assets/img/0.jpg" alt="tu3" title="tu3" style="visibility: visible;">
+              <img class="lazy" src="@/assets/img/aboutus1.jpg" alt="tu3" title="tu3" style="visibility: visible;">
             </div>
           </div>
           <div class="col-xs-12 col-sm-12 col-md-4">
             <div class="about-p">
-              <img class="lazy" src="../../assets/img/1.jpg" alt="tu3" title="tu3" style="visibility: visible;">
+              <img class="lazy" src="../../assets/img/aboutus2.jpg" alt="tu3" title="tu3" style="visibility: visible;">
             </div>
           </div>
           <div class="col-xs-12 col-sm-12 col-md-4">
             <div class="about-p">
-              <img class="lazy" src="../../assets/img/2.jpg" alt="tu3" title="tu3" style="visibility: visible;">
+              <img class="lazy" src="../../assets/img/aboutus3.jpg" alt="tu3" title="tu3" style="visibility: visible;">
             </div>
           </div>
           <div class="col-xs-12 col-sm-12 col-md-12">
@@ -126,11 +126,11 @@ export default {
       return {};
     },
     mounted() {
-      
+
     }
   };
 </script>
- <style lang="scss" scoped> 
+ <style lang="scss" scoped>
 .about-us {
 	font-family: Open Sans;
     font-size: 14px;
@@ -144,7 +144,7 @@ export default {
   img{
   width: 100%;
 }
-  } 
+  }
 .about-us-box {
   font-family: Open Sans;
 	.about-i {
@@ -199,6 +199,6 @@ export default {
       line-height: 27px;
     }
   }
-} 
+}
 </style>
 
