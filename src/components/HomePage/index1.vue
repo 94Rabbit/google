@@ -3,16 +3,12 @@
     <div class="swiper">
       <div class="swiper-container banner1">
         <div class="swiper-wrapper">
-          <div class="swiper-slide" v-for="item in bannerList">
+          <div class="swiper-slide" v-for="item in bannerList" @click="goContactUs(item)">
             <img
               :src="item.pic"
               alt
               srcset
             />
-            <div class="text">
-              <img src="//5ororwxhmplorik.ldycdn.com/cloud/ioBqjKmrRinSillirnln/lunbo3-zi.png" alt />
-              <div class="more">VIEW MORE</div>
-            </div>
           </div>
         </div>
         <div class="swiper-pagination"></div>
@@ -26,7 +22,7 @@
         </div>
         <div class="banner2 swiper-container">
           <div class="swiper-wrapper">
-            <div class="swiper-slide" v-for="item in hotProducts">
+            <div class="swiper-slide" v-for="item in hotProducts" @click="goProductDetail(item)">
               <img
                 style="display: block;width:200px;height: 200px;margin: 0 auto"
                 :src="item.pic[0]"
@@ -107,7 +103,7 @@
     <div class="products">
       <div class="container">
         <div class="productList col-md-12">
-          <div class="productItem col-md-3" v-for="item in mainProducts">
+          <div class="productItem col-md-3" v-for="item in mainProducts" @click="goProductDetail(item, true)">
             <div class="imgBox">
               <img :src="item.pic[0]" alt />
             </div>
@@ -178,13 +174,14 @@ export default {
   },
   async mounted() {
     await this.getProduct({});
+    await this.getBanners();
     var swiper = new Swiper(".banner1", {
       loop: true,
-      // autoplay: {
-      //   delay: 3000,
-      //   stopOnLastSlide: false,
-      //   disableOnInteraction: true
-      // },
+      autoplay: {
+        delay: 3000,
+        stopOnLastSlide: false,
+        disableOnInteraction: true
+      },
       pagination: {
         el: ".swiper-pagination",
         clickable: true
@@ -212,7 +209,7 @@ export default {
       //   disableOnInteraction: true
       // }
     });
-    this.getBanners();
+
   },
   methods:{
     async getBanners(){
@@ -234,8 +231,26 @@ export default {
         this.mainProducts.splice(3,1)
       }
       console.log(this.hotProducts, this.mainProducts)
+      },
+      /*
+        去商品商品详情
+       */
+      async  goProductDetail(item, isMore = false){
+        this.$router.push({name: 'productDetail', query:{id:item.id,isMore}})
+      },
+      /*
+         联系我们
+      */
+      async  goContactUs(item){
+        this.$router.push({name: 'contactus', query:{id:item.id}})
+      },
+      /*
+        去新闻详情
+       */
+      async  goNewsDetail(item){
+        this.$router.push({name: 'newsDetail', query:{id:item.id}})
       }
-    }
+    },
 };
 </script>
 
@@ -474,9 +489,10 @@ export default {
   }
 
   .products {
-    background: url(https://5ororwxhmplorik.ldycdn.com/cloud/ipBqjKmrRinSilmrjiln/SHICHA.jpg)
+    /*background: url(https://5ororwxhmplorik.ldycdn.com/cloud/ipBqjKmrRinSilmrjiln/SHICHA.jpg)*/
+    background: url('../../assets/img/main_product.jpg')
       no-repeat fixed center center;
-    background-size: initial;
+    background-size: 200% 200%;
     border-left: 0 solid #000;
     border-right: 0 solid #000;
     border-top: 0 solid #000;

@@ -12,7 +12,7 @@
 			 				<hr/>
 			 			</div>
 			 			<!--pic-->
-			 			<div class="row">
+			 			<div v-if="!isReadMore" class="row">
 			 				<div class="col-xs-12 col-sm-12 col-md-6">
 			 					<div class="pro-pic-list">
 <!--			 						  轮播图-->
@@ -74,7 +74,7 @@
 			 				</div>
 			 			</div>
 			 			<!--font-->
-			 			<div class="pro-d-p">
+			 			<div v-if="!isReadMore" class="pro-d-p">
 			 				<h3><span>Product Description</span></h3>
 			 				<div class="pro-font-pic">
 			 				<div class="pro-d-h">
@@ -93,23 +93,9 @@
                 <h4><span>FAQ</span></h4>
               </div>
               <p v-html="productInfo.faq"></p>
-			 				<div class="row">
-			 					<div class="col-xs-12 col-sm-6 col-md-6">
-			 						<div>
-			 							<img src="https://5prorwxhmplojik.ldycdn.com/cloud/ljBqjKmrRinSkpqkpmlp/600.jpg">
-			 						    <p style="text-align: center">500L double cone mixer</p>
-			 						</div>
-			 					</div>
-			 					<div class="col-xs-12 col-sm-6 col-md-6">
-			 						<div>
-			 							<img src="https://5qrorwxhmploiik.ldycdn.com/cloud/liBqjKmrRinSkpqkqmlp/600.jpg">
-			 						    <p style="text-align: center">work with vacuum conveyor for feeding</p>
-			 						</div>
-			 					</div>
-			 				</div>
 			 			  </div>
 			 			</div>
-			 			<div class="pro-nex-btn">
+			 			<div v-if="!isReadMore" class="pro-nex-btn">
 			 				<a href="###">Next:  Air Classifying Mill Pulverizer</a>
 			 			</div>
 			 			<div>
@@ -146,21 +132,9 @@
 		 			<div class="pro-d-relat">
 		 				<h3>Related Products</h3>
 		 				<div class="row">
-<!--		 					<div class="col-xs-12 col-sm-6 col-md-3">-->
-<!--		 						<a href="##">-->
-<!--		 							<img src="../../assets/img/640-300-300.jpg">-->
-<!--		 						</a>-->
-<!--		 						<a href="">{{productInfo.related_productions}}</a>-->
-<!--		 					</div>-->
-<!--		 					<div class="col-xs-12 col-sm-6 col-md-3">-->
-<!--		 						<a href="##">-->
-<!--		 							<img src="../../assets/img/640-220-220 (1).jpg">-->
-<!--		 						</a>-->
-<!--		 						<a href="">{{productInfo.related_productions}}</a>-->
-<!--		 					</div>-->
               <div class="product-banner swiper-container">
                 <div class="swiper-wrapper">
-                  <div class="swiper-slide" v-for="item in relatedProduct">
+                  <div class="swiper-slide" v-for="item in relatedProduct" @click="goProductDetail(item)">
                     <img
                       style="display: block;width:200px;height: 200px;margin: 0 auto"
                       :src="item.pic[0]"
@@ -259,11 +233,13 @@ export default {
         num:1,
         qrcode: null,
         relatedProduct:[],
-        relatedNews: []
+        relatedNews: [],
+        isReadMore:false
       };
     },
     async mounted() {
-      this.getProductDetail();
+      this.isReadMore = this.$route.query.isMore;
+      await this.getProductDetail();
       await this.getRelatedProduct();
       await this.getRelatedNews();
     /* banner-swiper */
@@ -431,6 +407,12 @@ export default {
           pic:this.productPics[0]
         }
         this.$router.push({name:'inquire',query:{isCart:false,product}})
+      },
+      /*
+      去商品商品详情
+      */
+      async  goProductDetail(item){
+        this.$router.push({name: 'productDetail', query:{id:item.id}})
       }
     },
     watch:{

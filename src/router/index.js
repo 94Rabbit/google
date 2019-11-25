@@ -93,7 +93,7 @@ export default new Router({
       ]
     },
     {
-      path: 'productDetail',
+      path: '/productDetail',
       name: 'productDetail',
       component: resolve => require(['@/components/ProDetail'], resolve),
       meta: {

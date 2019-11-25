@@ -83,10 +83,15 @@ export default {
       },
     };
   },
+  mounted(){
+    this.feedBackInfo.production_id = this.$route.query.id ? this.$route.query.id: 0
+  },
   methods: {
     async feedBack(){
       let res = await feedbackAPI(this.feedBackInfo);
-      console.log(res);
+      if(res.data && res.data.msg==='success'){
+        alert('send successfully')
+      }
     }
   }
 };
