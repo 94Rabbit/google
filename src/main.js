@@ -61,21 +61,14 @@ Vue.component(Tools.name,Tools)
 /* 回到顶部 */
 import GoTop from './components/GoTop'
 Vue.component(GoTop.name,GoTop)
-
 Vue.config.productionTip = false
-
 router.beforeEach((to, from, next) => {
   if(to.meta.title){
     document.title = to.meta.title
   }
   next();
 });
-
-
-
 Vue.use(VeeValidate);
-
-
 new Vue({
   el: '#app',
   store,

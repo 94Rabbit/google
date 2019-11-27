@@ -167,11 +167,6 @@ export default {
     };
   },
   created() {},
-  methods: {
-    changeNav(e) {
-      console.log(arguments);
-    }
-  },
   async mounted() {
     await this.getProduct({});
     await this.getBanners();
@@ -197,10 +192,6 @@ export default {
       navigation: {
         nextEl: ".swiper-button-next",
         prevEl: ".swiper-button-prev"
-      },
-      pagination: {
-        el: ".swiper-pagination",
-        clickable: true
       },
       loop: true
       // autoplay: {

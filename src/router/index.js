@@ -1,7 +1,21 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 Vue.use(Router)
-
+import store from '../store/store'
+let dynamicRoutes = []
+let vuexData = JSON.parse(localStorage.getItem("cartList") && localStorage.getItem("cartList"))
+console.log(vuexData.dynamicRoutes)
+vuexData.dynamicRoutes.forEach(el=>{
+  dynamicRoutes.push({
+    path: el.name_en,
+    name: el.name_en,
+    component: resolve => require(['@/components/Product'], resolve),
+    meta: {
+    title: '产品列表'
+    }
+  })
+})
+console.log(dynamicRoutes, 'success')
 export default new Router({
   routes: [
     {
@@ -49,48 +63,7 @@ export default new Router({
       meta: {
         title: '产品列表'
       },
-      children: [
-        {
-          path: 'industrial Dryer',
-          name: 'industrial Dryer',
-          component: resolve => require(['@/components/Product'], resolve),
-          meta: {
-            title: '产品列表'
-          }
-        },
-        {
-          path: 'Impact Mill',
-          name: 'Impact Mill',
-          component: resolve => require(['@/components/Product'], resolve),
-          meta: {
-            title: '产品列表'
-          }
-        },
-        {
-          path: 'Powder Mixer',
-          name: 'Powder Mixer',
-          component: resolve => require(['@/components/Product'], resolve),
-          meta: {
-            title: '产品列表'
-          }
-        },
-        {
-          path: 'Wet Granulator',
-          name: 'Wet Granulator',
-          component: resolve => require(['@/components/Product'], resolve),
-          meta: {
-            title: '产品列表'
-          }
-        },
-        {
-          path: 'Conveying Equipment',
-          name: 'Conveying Equipment',
-          component: resolve => require(['@/components/Product'], resolve),
-          meta: {
-            title: '产品列表'
-          }
-        }
-      ]
+      children:dynamicRoutes
     },
     {
       path: '/productDetail',

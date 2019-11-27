@@ -18,11 +18,7 @@
           <li class="dropdown">
             <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><router-link style="text-decoration: none;color:#777" to="/products">Products</router-link><span class="caret"></span></a>
             <ul class="dropdown-menu">
-              <li><router-link to="/products/Industrial Dryer">Industrial Dryer</router-link></li>
-              <li><router-link to="/products/Impact Mill">Impact Mill</router-link></li>
-              <li><router-link to="/products/Powder Mixer">Powder Mixer</router-link></li>
-              <li><router-link to="/products/Wet Granulator">Wet Granulator</router-link></li>
-              <li><router-link to="/products/Conveying Equipment">Conveying Equipment</router-link></li>
+              <li v-for="item in productTypes"><router-link :to="'/products/'+ item.path">{{item.name_en}}</router-link></li>
             </ul>
           </li>
           <li><router-link to="/news">News</router-link></li>
@@ -39,6 +35,7 @@
   </nav>
 </template>
 <script>
+  import { mapState } from 'vuex'
 export default {
   name: "Header",
   data() {
@@ -94,6 +91,14 @@ export default {
         },
       ]
     };
+  },
+  computed: {
+    ...mapState({
+      productTypes: state => state.productTypes
+    }),
+  },
+  mounted(){
+    console.log(this.productTypes, '头部商品类型');
   },
   methods: {
     navClick(index, name) {

@@ -1,5 +1,5 @@
 <template>
-  <div class="footer">
+  <div class="footer" :class="{'fixed':isFixed}">
     <div class="top">
       <div class="container">
         <div class="main col-md-12">
@@ -60,21 +60,11 @@
             </div>
             <transition name="expand" class="expand">
               <div class="list" v-show="show2">
-                <router-link tag="div" class="tab-item listItem" to="/products">
-                  <span class="tab-link">Industrial Dryer</span>
-                </router-link>
-                <router-link tag="div" class="tab-item listItem" to="/products">
-                  <span class="tab-link">Impact Mill</span>
-                </router-link>
-                <router-link tag="div" class="tab-item listItem" to="/products">
-                  <span class="tab-link">Powder Mixer</span>
-                </router-link>
-                <router-link tag="div" class="tab-item listItem" to="/products">
-                  <span class="tab-link">Wet Granulator</span>
-                </router-link>
-                <router-link tag="div" class="tab-item listItem" to="/products">
-                  <span class="tab-link">Conveying Equipment</span>
-                </router-link>
+                <div v-for="item in productTypes">
+                  <router-link  tag="div" class="tab-item listItem" :to="'/products/'+item.name_en" >
+                    <span class="tab-link">{{item.name_en}}</span>
+                  </router-link>
+                </div>
               </div>
             </transition>
           </div>
@@ -129,13 +119,26 @@
 </template>
 
 <script type="text/ecmascript-6">
+  import { mapState } from 'vuex'
   export default {
     name: "Footer",
     data() {
       return {
         show1: false, //控制第一个菜单
-        show2: false //控制第一个菜单
+        show2: false,//控制第一个菜单,
+        isFixed: false
       };
+    },
+    computed: {
+      ...mapState({
+        productTypes: state => state.productTypes
+      }),
+    },
+    watch:{
+      '$route.path':(el) => {
+        console.log(this.isFixed,'dasd')
+        return this.isFixed =  document.body.scrollHeight < (window.innerHeight || document.documentElement.clientHeight)
+      }
     },
     methods: {
       changeActive($event) {
@@ -457,5 +460,11 @@
         }
       }
     }
+  }
+  .fixed{
+    position: fixed !important;
+    border: 1px solid red;
+    width: 100%;
+    bottom:0
   }
 </style>

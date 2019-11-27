@@ -13,7 +13,7 @@
                     <div class="soft-t" @click="goProductDetail(item)">
                       <a :href="item.href"><img :src="item.pic[0]"></a>
                     </div>
-                    <div class="soft-m"><p><a :href="item.href">{{item.name_en}}</a></p></div>
+                    <div class="soft-m"><p><a :href="item.href" >{{item.name_en}}</a></p></div>
                     <div class="soft-f">
                       <button @click="goOrderList(item)">
                         <i class="glyphicon glyphicon-envelope" aria-hidden="true"></i>Inquire</button>
@@ -36,7 +36,7 @@
 <script>
 import ShopNote  from '@/components/ShopNote'
 import SoftLeft from "@/components/SoftLeft"
-import { getProductAPI, getProductTypeAPI } from '@/api'
+import { getProductAPI } from '@/api'
 export default {
 	name: "SoftWare",
 	components: {
@@ -51,7 +51,6 @@ export default {
           is_main:2,
           keyword:'6666'
         },
-        productTypes:[], // 左侧商品类型
         productList:[], // 右侧商品列表
       	concat:[
       	{name:'WECHAT/WHATSAPP',concat:'13341624188'},
@@ -68,25 +67,9 @@ export default {
       };
     },
     mounted() {
-	    this.getProductType();
       this.getProductList({})
     },
     methods:{
-	    /*
-	      获取左侧商品类型
-	     */
-      async getProductType(){
-        let res = await getProductTypeAPI({});
-        if(res.data && res.data.data){
-          this.productTypes = res.data.data
-          this.productTypes[0].path = this.productTypes[0].name_en
-          this.productTypes[1].path = this.productTypes[1].name_en
-          this.productTypes[2].path = this.productTypes[2].name_en
-          this.productTypes[3].path = this.productTypes[3].name_en
-          this.productTypes[4].path = this.productTypes[4].name_en
-          console.log(this.productTypes,'类型')
-        }
-      },
       /*
         获取商品列表
        */
@@ -117,7 +100,6 @@ export default {
         查看订单详情
        */
       goOrderList(item){
-        console.log(item);
         const { id,name_en } = item
         let product = {
           id,
@@ -186,6 +168,9 @@ export default {
  		padding: 4px;
         border: 1px solid #dcdcdc;
  		.soft-t {
+      /*overflow: hidden;!*超出部分隐藏*!*/
+      /*text-overflow:ellipsis;!* 超出部分显示省略号 *!*/
+      /*white-space: nowrap;!*规定段落中的文本不进行换行 *!*/
  			width: 100%;
 		    height: 200px;
 		    display: table;
@@ -240,9 +225,13 @@ export default {
 				    color: #333;
 				    font-weight: bold;
 				    letter-spacing: 0;
-				    line-height: 1.5em !important;
+				    /*line-height: 1.5em !important;*/
 				    text-align: center;
 				    display: block;
+            overflow: hidden;/*超出部分隐藏*/
+            text-overflow:ellipsis;/* 超出部分显示省略号 */
+            white-space: nowrap;/*规定段落中的文本不进行换行 */
+            cursor: pointer;
  					&:hover{
  						color: red;
  				    }

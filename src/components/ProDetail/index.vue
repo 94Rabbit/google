@@ -348,9 +348,8 @@ export default {
       async  feedBack(){
         this.feedBackInfo.production_id = this.productInfo.id
         let res = await feedbackAPI(this.feedBackInfo);
-        debugger
         if(res.data && res.data.data){
-          console.log(res);
+          alert('22')
         }
       },
       /*
@@ -393,10 +392,9 @@ export default {
         let id = this.$route.query.id
         let res = await getRelatedNewsAPI(id)
         this.relatedNews = res.data.data
-        console.log(this.relatedNews, '相关新闻')
       },
       /*
-      进入订单信息
+      进入订单信
      */
       goOrderList(){
         const { id,name_en } = this.$route.query

@@ -45,7 +45,7 @@
             <div class="about-f">
               <h2>WHAT WE DO</h2>
               <hr/>
-              <p>DOING MACHINE is specialized in design, manufacturing, engineering and exporting of industrial dryers, impact mills, powder mixers, wet granulators and conveying equipements.</p>
+              <p>Shantui has formed a state-owned large-scale listed company that develops, produces and sells shoveling transport machinery, compaction machinery, road machinery, excavation machinery and other key products.</p>
             </div>
           </div>
 
@@ -54,10 +54,11 @@
               <div class="e-row">
                 <div class="col-xs-2 col-sm-2 col-md-2 an-1">1</div>
                 <div class="col-xs-10 col-sm-10 col-md-10 an-2">
-                  <p>ADVANTAGE<br/>TEST CENTER</p>
+<!--                  <p>ADVANTAGE<br/>TEST CENTER</p>-->
+                  <p>Strong manufacturing strength</p>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12 an-3">
-                  <p>We can test your product for free to determine the optimal process for final design. </p>
+                  <p>Shantui is a state-owned joint-stock listed company. It is one of the top 50 manufacturers of construction machinery in the world, and SHANTUI bulldozer has ranked first in China. </p>
                 </div>
               </div>
             </div>
@@ -67,10 +68,11 @@
               <div class="e-row">
                 <div class="col-xs-2 col-sm-2 col-md-3 an-1">2</div>
                 <div class="col-xs-10 col-sm-10 col-md-9 an-2">
-                  <p>ADVANTAGE<br/>ON-SITE TRAINING</p>
+<!--                  <p>ADVANTAGE<br/>ON-SITE TRAINING</p>-->
+                  <p>Classic after-sales service</p>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12 an-3">
-                  <p>On-site advice, engineering and traning to help you to optimise your process.  </p>
+                  <p>The equipment provided by our company has been installed and commissioned in the factory so that they can be used directly after receiving it.</p>
                 </div>
               </div>
             </div>
@@ -80,10 +82,11 @@
               <div class="e-row">
                 <div class="col-xs-2 col-sm-2 col-md-3 an-1">3</div>
                 <div class="col-xs-10 col-sm-10 col-md-9 an-2">
-                  <p>ADVANTAGE<br/>SPARE PARTS</p>
+<!--                  <p>ADVANTAGE<br/>SPARE PARTS</p>-->
+                  <p>Complete spare parts supply</p>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12 an-3">
-                  <p>Avoid the hassle of souring spare parts with our extensive stock and swift delivery.  </p>
+                  <p>SHANTUI research and produce the main parts for the equipment such as the undercarriage parts, ground engaging Tools, transmission, engine parts, hydraulic parts etc. So we can offer you all the spare parts when your equipment need to be repaired.</p>
                 </div>
               </div>
             </div>

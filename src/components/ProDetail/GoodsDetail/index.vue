@@ -73,7 +73,6 @@ export default {
       img: this.pic[0],
       index: 0
     };
-    console.log(this.current, 'dsadashj')
     window.addEventListener("resize", this.windowResize);
   },
   beforeDestroy() {
